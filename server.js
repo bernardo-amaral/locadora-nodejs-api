@@ -10,7 +10,7 @@ const mc = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'mydb'
+    database: 'locadora'
 });
  
 // connect to database

@@ -5,7 +5,7 @@ var connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
     password : '',
-    database : 'mydb'
+    database : 'locadora'
 });
 
 connection.connect(function(err) {

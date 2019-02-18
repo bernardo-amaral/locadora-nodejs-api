@@ -1,12 +1,12 @@
 var sql = require('./db.js');
 
 var User = function (user) {
-    this.user = user.user;
-    this.status = user.status;
-    this.created_at = new Date();
+    this.name = user.name;
+    this.email = user.email;
+    this.password = user.password;
 };
 User.createUser = function createUser(newUser, result) {
-    sql.query("INSERT INTO users set ?", newUser, function (err, res) {
+    sql.query("INSERT INTO users set ?", newUser, function(err, res) {
         if (err) {
             console.log("error: ", err);
             result(err, null);
@@ -17,7 +17,7 @@ User.createUser = function createUser(newUser, result) {
     });
 };
 User.getById = function getById(userId, result) {
-    sql.query("select user from users where id = ? ", userId, function (err, res) {
+    sql.query("SELECT * FROM users WHERE user_id = ? ", userId, function(err, res) {
         if (err) {
             console.log("error: ", err);
             result(err, null);
@@ -28,7 +28,7 @@ User.getById = function getById(userId, result) {
     });
 };
 User.getAll = function getAll(result) {
-    sql.query("select * from users", function (err, res) {
+    sql.query("SELECT * FROM users ORDER BY user_id ASC", function(err, res) {
         if (err) {
             console.log("error: ", err);
             result(null, err);
@@ -40,7 +40,7 @@ User.getAll = function getAll(result) {
 };
 
 User.remove = function (id, result) {
-    sql.query("DELETE FROM users WHERE id = ?", [id], function (err, res) {
+    sql.query("DELETE FROM users WHERE user_id = ?", [id], function(err, res) {
         if (err) {
             console.log("error: ", err);
             result(null, err);
