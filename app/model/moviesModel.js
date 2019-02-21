@@ -28,13 +28,13 @@ class Movie {
   }
 
   static rentMovie(movieId, result) {
-    sql.query('UPDATE FROM movies SET quantity = (quantity - 1) WHERE movie_id = ? AND quantity > 0', (err, res) => {
+    sql.query('UPDATE movies SET quantity = (quantity - 1) WHERE movie_id = ? AND quantity > 0', movieId, (err, res) => {
       result(null, res);
     });
   }
 
   static returnMovie(movieId, result) {
-    sql.query('UPDATE FROM movies SET quantity = (quantity + 1) WHERE movie_id = ?', (err, res) => {
+    sql.query('UPDATE movies SET quantity = (quantity + 1) WHERE movie_id = ?', movieId, (err, res) => {
       result(null, res);
     });
   }

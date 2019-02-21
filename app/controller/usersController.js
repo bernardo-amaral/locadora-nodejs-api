@@ -1,4 +1,4 @@
-const jwt = require('express-jwt');
+const jwt = require('jsonwebtoken');
 const User = require('../model/usersModel.js');
 
 class UserController {
@@ -10,7 +10,8 @@ class UserController {
   }
 
   static authUser(req, res) {
-    res.send(jwt({ secret: Buffer.from('shhhhhhared-secret', 'base64') }));
+    const token = jwt.sign({ foo: 'bar' }, 'shhhhh', { expiresIn: '24h' });
+    res.json(token);
   }
 
   static getById(req, res) {

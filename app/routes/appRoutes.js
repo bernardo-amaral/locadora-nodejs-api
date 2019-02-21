@@ -1,21 +1,31 @@
-module.exports = function (app) {
-  const Users = require('../controller/usersController');
-  const Movies = require('../controller/moviesController');
+const Users = require('../controller/usersController');
+const Movies = require('../controller/moviesController');
 
-  app.route('/login')
-    .get(Users.authUser);
+class Routes {
+  constructor(app) {
+    app.route('/login')
+      .get(Users.authUser);
 
-  app.route('/users')
-    .get(Users.listAll)
-    .post(Users.createAUser);
+    app.route('/users')
+      .get(Users.listAll)
+      .post(Users.createAUser);
 
-  app.route('/users/:userId')
-    .delete(Users.delete)
-    .get(Users.getById);
+    app.route('/users/:userId')
+      .delete(Users.delete)
+      .get(Users.getById);
 
-  app.route('/movies')
-    .get(Movies.listAll);
+    app.route('/movies')
+      .get(Movies.listAll);
 
-  app.route('/movies/search/:partialName')
-    .get(Movies.searchMovie);
-};
+    app.route('/movies/rent/:movieId')
+      .get(Movies.rentMovie);
+
+    app.route('/movies/return/:movieId')
+      .get(Movies.returnMovie);
+
+    app.route('/movies/search/:partialName')
+      .get(Movies.searchMovie);
+  }
+}
+
+module.exports = Routes;
