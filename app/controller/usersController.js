@@ -13,7 +13,7 @@ class UserController {
 
   static authUser(request, response) {
     const loginUser = new User(request.body);
-
+    loginUser.password = crypto.createHash('md5').update(loginUser.password).digest('hex');
     User.login(loginUser, (error, userLogged) => {
       if (userLogged) {
         const token = jwt.sign({ name: loginUser.name, email: loginUser.email }, config.jwtSecret, { expiresIn: '24h' });
