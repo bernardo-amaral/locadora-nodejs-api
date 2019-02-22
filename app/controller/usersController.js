@@ -2,40 +2,40 @@ const jwt = require('jsonwebtoken');
 const User = require('../model/usersModel.js');
 
 class UserController {
-  static listAll(req, res) {
+  static listAll(request, response) {
     User.getAll((err, user) => {
-      if (err) { res.send(err); }
-      res.send(user);
+      if (err) { response.send(err); }
+      response.send(user);
     });
   }
 
-  static authUser(req, res) {
+  static authUser(request, response) {
     const token = jwt.sign({ foo: 'bar' }, 'shhhhh', { expiresIn: '24h' });
-    res.json(token);
+    response.json({ token });
   }
 
-  static getById(req, res) {
-    User.getById(req.params.userId, (err, user) => {
-      if (err) { res.send(err); }
-      res.json(user);
+  static getById(request, response) {
+    User.getById(request.params.userId, (error, user) => {
+      if (error) { response.send(error); }
+      response.json(user);
     });
   }
 
-  static delete(req, res) {
-    User.remove(req.params.userId, (err, user) => {
-      if (err) { res.send(err); }
-      res.json(user);
+  static delete(request, response) {
+    User.remove(request.params.userId, (error, user) => {
+      if (error) { response.send(error); }
+      response.json(user);
     });
   }
 
-  static createAUser(req, res) {
-    const newUser = new User(req.body);
+  static createAUser(request, response) {
+    const newUser = new User(request.body);
     if (!newUser.name && !newUser.email && !newUser.password) {
-      res.status(400).send({ error: true, message: 'Please provide user required fields' });
+      response.status(400).send({ error: true, message: 'Please provide user required fields' });
     } else {
-      User.createUser(newUser, (err, user) => {
-        if (err) { res.send(err); }
-        res.json(user);
+      User.createUser(newUser, (error, user) => {
+        if (error) { response.send(error); }
+        response.json(user);
       });
     }
   }
