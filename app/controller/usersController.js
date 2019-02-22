@@ -11,35 +11,44 @@ class UserController {
     });
   }
 
-  static authUser(req, res) {
-    const user = new User(req.body);
-    const token = jwt.sign({ name: user.name, email: user.email }, config.jwtSecret, { expiresIn: '24h' });
-    res.json(token);
-  }
+  static authUser(request, response) {
+    const loginUser = new User(request.body);
 
-  static getById(req, res) {
-    User.getById(req.params.userId, (err, user) => {
-      if (err) { res.send(err); }
-      res.json(user);
+    User.login(loginUser, (error, userLogged) => {
+      if (userLogged) {
+        const token = jwt.sign({ name: loginUser.name, email: loginUser.email }, config.jwtSecret, { expiresIn: '24h' });
+        response.json({ user: loginUser.name, token });
+      } else {
+        response.status(400).send({ error: true, message: 'Access denied!' });
+      }
     });
   }
 
-  static delete(req, res) {
-    User.remove(req.params.userId, (err, user) => {
-      if (err) { res.send(err); }
-      res.json(user);
+  static getById(request, response) {
+    User.getById(request.params.userId, (error, user) => {
+      if (error) { response.send(error); }
+      response.json(user);
     });
   }
 
-  static createAUser(req, res) {
-    const newUser = new User(req.body);
+  static delete(request, response) {
+    User.remove(request.params.userId, (error, user) => {
+      if (error) { response.send(error); }
+      response.json(user);
+    });
+  }
+
+  static createAUser(request, response) {
+    const newUser = new User(request.body);
     if (!newUser.name && !newUser.email && !newUser.password) {
-      res.status(400).send({ error: true, message: 'Please provide user required fields' });
+      response.status(400).send({ error: true, message: 'Please provide user required fields' });
     } else {
       newUser.password = crypto.createHash('md5').update(newUser.password).digest('hex');
-      User.createUser(newUser, (err, user) => {
-        if (err) { res.send(err); }
-        res.json(user);
+      User.createUser(newUser, (error, user) => {
+        if (error) {
+          response.send(error);
+        }
+        response.json(user);
       });
     }
   }
