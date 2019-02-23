@@ -1,4 +1,4 @@
-const sql = require('./db');
+const sql = require('./database');
 
 class User {
   constructor(user) {
@@ -21,7 +21,7 @@ class User {
       if (error) {
         result(error, null);
       } else {
-        result(null, response.insertId);
+        result(null, response);
       }
     });
   }

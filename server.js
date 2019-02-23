@@ -12,7 +12,6 @@ console.log(`API server started on: ${port}`);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-const Routes = require('./app/routes/appRoutes');
+const Routes = require('./app/routes/appV1Routes');
 
-// eslint-disable-next-line no-unused-vars
-const routes = new Routes(app);
+app.use('/api', new Routes());
