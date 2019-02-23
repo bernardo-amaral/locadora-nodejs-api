@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 class Routes {
   constructor(app) {
     app.route('/login')
-      .get(Users.authUser);
+      .post(Users.authUser);
 
     app.route('/users')
       .get(Users.listAll)

@@ -1,5 +1,5 @@
 
-const Movie = require('../model/moviesModel.js');
+const Movie = require('../model/moviesModel');
 
 class MovieController {
   static listAll(request, response) {

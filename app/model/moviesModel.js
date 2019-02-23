@@ -1,4 +1,4 @@
-const sql = require('./db.js');
+const sql = require('./db');
 
 class Movie {
   constructor(movie) {
@@ -8,34 +8,34 @@ class Movie {
   }
 
   static searchMovie(partialTitle, result) {
-    sql.query('SELECT * FROM movies WHERE title like ? AND quantity > 0 ORDER BY title ASC', `${partialTitle}%`, (err, res) => {
-      if (err) {
-        result(err, null);
+    sql.query('SELECT * FROM movies WHERE title like ? AND quantity > 0 ORDER BY title ASC', `${partialTitle}%`, (error, response) => {
+      if (error) {
+        result(error, null);
       } else {
-        result(null, res);
+        result(null, response);
       }
     });
   }
 
   static getAll(result) {
-    sql.query('SELECT * FROM movies WHERE quantity > 0 ORDER BY title ASC', (err, res) => {
-      if (err) {
-        result(null, err);
+    sql.query('SELECT * FROM movies WHERE quantity > 0 ORDER BY title ASC', (error, response) => {
+      if (error) {
+        result(null, error);
       } else {
-        result(null, res);
+        result(null, response);
       }
     });
   }
 
   static rentMovie(movieId, result) {
-    sql.query('UPDATE movies SET quantity = (quantity - 1) WHERE movie_id = ? AND quantity > 0', movieId, (err, res) => {
-      result(null, res);
+    sql.query('UPDATE movies SET quantity = (quantity - 1) WHERE movie_id = ? AND quantity > 0', movieId, (error, response) => {
+      result(null, response);
     });
   }
 
   static returnMovie(movieId, result) {
-    sql.query('UPDATE movies SET quantity = (quantity + 1) WHERE movie_id = ?', movieId, (err, res) => {
-      result(null, res);
+    sql.query('UPDATE movies SET quantity = (quantity + 1) WHERE movie_id = ?', movieId, (error, response) => {
+      result(null, response);
     });
   }
 }

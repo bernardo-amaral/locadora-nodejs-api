@@ -1,5 +1,7 @@
 const jwt = require('jsonwebtoken');
-const User = require('../model/usersModel.js');
+const crypto = require('crypto');
+const User = require('../model/usersModel');
+const config = require('../config');
 
 class UserController {
   static listAll(request, response) {
@@ -10,8 +12,16 @@ class UserController {
   }
 
   static authUser(request, response) {
-    const token = jwt.sign({ foo: 'bar' }, 'shhhhh', { expiresIn: '24h' });
-    response.json({ token });
+    const loginUser = new User(request.body);
+    loginUser.password = crypto.createHash('md5').update(loginUser.password).digest('hex');
+    User.login(loginUser, (error, userLogged) => {
+      if (userLogged) {
+        const token = jwt.sign({ name: loginUser.name, email: loginUser.email }, config.jwtSecret, { expiresIn: '24h' });
+        response.json({ user: loginUser.name, token });
+      } else {
+        response.status(400).send({ error: true, message: 'Access denied!' });
+      }
+    });
   }
 
   static getById(request, response) {
@@ -33,8 +43,11 @@ class UserController {
     if (!newUser.name && !newUser.email && !newUser.password) {
       response.status(400).send({ error: true, message: 'Please provide user required fields' });
     } else {
+      newUser.password = crypto.createHash('md5').update(newUser.password).digest('hex');
       User.createUser(newUser, (error, user) => {
-        if (error) { response.send(error); }
+        if (error) {
+          response.send(error);
+        }
         response.json(user);
       });
     }
