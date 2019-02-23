@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 const User = require('../model/usersModel');
+const TokenVerify = require('../model/tokensModel');
 const config = require('../config');
 
 class UserController {
@@ -14,14 +15,28 @@ class UserController {
   static authUser(request, response) {
     const loginUser = new User(request.body);
     loginUser.password = crypto.createHash('md5').update(loginUser.password).digest('hex');
-    User.login(loginUser, (error, userLogged) => {
+    User.login(loginUser, (error, userLogged, userId) => {
       if (userLogged) {
         const token = jwt.sign({ name: loginUser.name, email: loginUser.email }, config.jwtSecret, { expiresIn: '24h' });
-        response.json({ user: loginUser.name, token });
+        TokenVerify.storageToken(token, userId, () => {
+          response.json({ user: loginUser.name, token });
+        });
       } else {
         response.status(400).send({ error: true, message: 'Access denied!' });
       }
     });
+  }
+
+  static logoutUser(request, response) {
+    const { userId } = request.body;
+    if (!userId) {
+      response.status(400).send({ error: true, message: 'Please provide userId' });
+    } else {
+      TokenVerify.disableUsersTokens(userId, (error) => {
+        if (error) { response.send(error); }
+        response.json({ message: 'Session closed' });
+      });
+    }
   }
 
   static getById(request, response) {
@@ -32,7 +47,7 @@ class UserController {
   }
 
   static delete(request, response) {
-    User.remove(request.params.userId, (error, user) => {
+    User.delete(request.params.userId, (error, user) => {
       if (error) { response.send(error); }
       response.json(user);
     });

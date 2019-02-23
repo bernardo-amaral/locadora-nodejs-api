@@ -12,8 +12,8 @@ class Routes {
     routes.route('/login')
       .post(Users.authUser);
 
-    routes.route('/logout')
-      .post(Users.authUser);
+    apiRoutes.route('/logout')
+      .post(Users.logoutUser);
 
     apiRoutes.route('/users')
       .get(Users.listAll)
