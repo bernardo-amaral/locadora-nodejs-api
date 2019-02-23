@@ -27,15 +27,24 @@ class Movie {
     });
   }
 
-  static rentMovie(movieId, result) {
+  static rentMovie(movieId, userId, result) {
     sql.query('UPDATE movies SET quantity = (quantity - 1) WHERE movie_id = ? AND quantity > 0', movieId, (error, response) => {
-      result(null, response);
+      sql.query('INSERT INTO users_movies SET user_id = ? , movie_id = ?', [userId, movieId], () => {
+        result(null, response);
+      });
     });
   }
 
-  static returnMovie(movieId, result) {
-    sql.query('UPDATE movies SET quantity = (quantity + 1) WHERE movie_id = ?', movieId, (error, response) => {
-      result(null, response);
+  static returnMovie(movieId, userId, result) {
+    sql.query('SELECT id_user_movie FROM users_movies WHERE movie_id = ? AND user_id = ? AND rented = ?', [movieId, userId, 'S'], (_error, rows) => {
+      if (rows.length > 0) {
+        sql.query('UPDATE movies SET quantity = (quantity + 1) WHERE movie_id = ?', movieId, (error, response) => {
+          sql.query('UPDATE users_movies SET rented = ? WHERE movie_id = ? AND user_id = ?', ['N', movieId, userId]);
+          result(null, response);
+        });
+      } else {
+        result(null, 'User dont have this movie');
+      }
     });
   }
 }

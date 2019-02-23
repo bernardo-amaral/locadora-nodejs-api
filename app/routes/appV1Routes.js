@@ -26,10 +26,10 @@ class Routes {
     apiRoutes.route('/movies')
       .get(Movies.listAll);
 
-    apiRoutes.route('/movies/rent/:movieId')
+    apiRoutes.route('/movies/rent/:movieId/:userId')
       .get(Movies.rentMovie);
 
-    apiRoutes.route('/movies/return/:movieId')
+    apiRoutes.route('/movies/return/:movieId/:userId')
       .get(Movies.returnMovie);
 
     apiRoutes.route('/movies/search/:partialName')

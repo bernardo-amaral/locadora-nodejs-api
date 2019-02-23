@@ -8,7 +8,7 @@ const port = process.env.PORT || 3000;
 
 app.listen(port);
 // eslint-disable-next-line no-console
-console.log(`API server started on: ${port}`);
+console.log(`Locadora API server started on: ${port}`);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 

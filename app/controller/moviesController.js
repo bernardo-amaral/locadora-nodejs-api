@@ -17,14 +17,14 @@ class MovieController {
   }
 
   static rentMovie(request, response) {
-    Movie.rentMovie(request.params.movieId, (err, movie) => {
+    Movie.rentMovie(request.params.movieId, request.params.userId, (err, movie) => {
       if (err) { response.send(err); }
       response.json(movie);
     });
   }
 
   static returnMovie(request, response) {
-    Movie.returnMovie(request.params.movieId, (err, movie) => {
+    Movie.returnMovie(request.params.movieId, request.params.userId, (err, movie) => {
       if (err) { response.send(err); }
       response.json(movie);
     });
