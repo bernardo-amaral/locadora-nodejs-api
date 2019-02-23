@@ -1,45 +1,56 @@
+const express = require('express');
+const jwt = require('jsonwebtoken');
+const config = require('../config');
 const Users = require('../controller/usersController');
 const Movies = require('../controller/moviesController');
 
-const jwt = require('jsonwebtoken');
+const apiRoutes = express.Router();
 
 class Routes {
   constructor(app) {
+    apiRoutes.use((request, response, next) => {
+      const token = request.body.token || request.query.token || request.headers['x-access-token'];
+      if (token) {
+        jwt.verify(token, config.jwtSecret, (error, decoded) => {
+          if (error) {
+            return response.json({ success: false, message: 'Failed to authenticate token.' });
+          }
+          request.decoded = decoded;
+          return next();
+        });
+      } else {
+        return response.status(403).send({
+          success: false,
+          message: 'No token provided.',
+        });
+      }
+      return false;
+    });
+
     app.route('/login')
       .post(Users.authUser);
 
-    app.route('/users')
+    apiRoutes.route('/users')
       .get(Users.listAll)
       .post(Users.createAUser);
 
-    app.route('/users/:userId')
+    apiRoutes.route('/users/:userId')
       .delete(Users.delete)
       .get(Users.getById);
 
-    app.route('/movies')
+    apiRoutes.route('/movies')
       .get(Movies.listAll);
 
-    app.route('/movies/rent/:movieId')
+    apiRoutes.route('/movies/rent/:movieId')
       .get(Movies.rentMovie);
 
-    app.route('/movies/return/:movieId')
+    apiRoutes.route('/movies/return/:movieId')
       .get(Movies.returnMovie);
 
-    app.route('/movies/search/:partialName')
+    apiRoutes.route('/movies/search/:partialName')
       .get(Movies.searchMovie);
 
-    app.post('/login', (req, res, next) => {
-      if (req.body.user === 'luiz' && req.body.pwd === '123') {
-        // auth ok
-        const id = 1; // esse id viria do banco de dados
-        const token = jwt.sign({ id }, process.env.SECRET, {
-          expiresIn: 300, // expires in 5min
-        });
-        res.status(200).send({ auth: true, token });
-      }
-
-      res.status(500).send('Login inválido!');
-    });
+    app.use('/v1', apiRoutes);
   }
 }
 
