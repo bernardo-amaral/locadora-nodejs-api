@@ -29,7 +29,7 @@ CREATE TABLE `movies` (
   `quantity` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`movie_id`),
   UNIQUE KEY `title` (`title`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `movies` (
 
 LOCK TABLES `movies` WRITE;
 /*!40000 ALTER TABLE `movies` DISABLE KEYS */;
-INSERT INTO `movies` VALUES (1,'Jurassic Park','Steven Spielberg',1),(2,'Madagascar','Tom McGrath, Eric Darnell',1),(3,'Indiana Jones','Steven Spielberg',1),(4,'E.T.','Steven Spielberg',1);
+INSERT INTO `movies` VALUES (1,'Jurassic Park','Steven Spielberg',4),(2,'Madagascar','Tom McGrath, Eric Darnell',3),(3,'Indiana Jones','Steven Spielberg',5),(4,'E.T.','Steven Spielberg',1),(5,'The Avengers','Joss Whedon',8);
 /*!40000 ALTER TABLE `movies` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,7 +92,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Bernardo','bernardo.amaral85@gmail.com','e7d80ffeefa212b7c5c55700e4f7193e'),(2,'Kira','kira@dogz.com','e7d80ffeefa212b7c5c55700e4f7193e'),(3,'Lola','lola@dogz.com','e7d80ffeefa212b7c5c55700e4f7193e'),(7,'Tutu','tutu@dogz.com','e7d80ffeefa212b7c5c55700e4f7193e');
+INSERT INTO `users` VALUES (1,'Bernardo','bernardo.amaral85@gmail.com','e7d80ffeefa212b7c5c55700e4f7193e'),(2,'Kira','kira@mailteste.com','e7d80ffeefa212b7c5c55700e4f7193e'),(3,'Lola','lola@mailteste.com','e7d80ffeefa212b7c5c55700e4f7193e');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -134,4 +134,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-22 22:45:32
+-- Dump completed on 2019-02-23 10:16:58
