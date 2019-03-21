@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bernardo-amaral/teste-4all.git"
+    "url": "git+https://github.com/bernardo-amaral/locadora-nodejs-api.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/bernardo-amaral/teste-4all/issues"
+    "url": "https://github.com/bernardo-amaral/locadora-nodejs-api/issues"
   },
-  "homepage": "https://github.com/bernardo-amaral/teste-4all#readme",
+  "homepage": "https://github.com/bernardo-amaral/locadora-nodejs-api#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
