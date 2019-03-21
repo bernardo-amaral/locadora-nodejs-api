@@ -1,0 +1,19 @@
+version: '3.2'
+
+services:
+  mysql:
+    container_name: docker-locadora
+    build: ./.docker/db
+    ports:
+      - "3306"
+    volumes:
+      - .:/db
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      - MYSQL_USER = locadoraadmin
+      - MYSQL_PASSWORD = locadorapass
+      - MYSQL_ROOT_PASSWORD = root
+      - MYSQL_DATABASE = locadora
+      - MYSQL_ROOT_HOST = %
+      - MYSQL_HOST = %
+      - MYSQL_ALLOW_EMPTY_PASSWORD = true

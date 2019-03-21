@@ -3,9 +3,10 @@ const mysql = require('mysql');
 // local mysql db connection
 const connection = mysql.createConnection({
   host: 'localhost',
-  user: 'root',
-  password: '',
+  user: 'locadoraadmin',
+  password: 'locadorapass',
   database: 'locadora',
+  port: 33060
 });
 
 connection.connect((err) => {
