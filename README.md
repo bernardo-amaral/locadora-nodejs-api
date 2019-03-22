@@ -1,4 +1,6 @@
-# Locadora API Server - NodeJs
+[![Build Status](https://travis-ci.org/bernardo-amaral/locadora-nodejs-api.svg?branch=master)](https://travis-ci.org/bernardo-amaral/locadora-nodejs-api)
+
+# NodeJs API Server
 
 ### Pré-requisitos
 
