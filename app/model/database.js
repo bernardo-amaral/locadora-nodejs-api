@@ -2,11 +2,11 @@ const mysql = require('mysql');
 
 // local mysql db connection
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'locadoraadmin',
-  password: 'locadorapass',
-  database: 'locadora',
-  port: 33060
+  host: '127.0.0.1',
+  user: 'apiadmin',
+  password: 'apipass',
+  database: 'myapi',
+  port: 3307,
 });
 
 connection.connect((err) => {

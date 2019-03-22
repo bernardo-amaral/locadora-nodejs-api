@@ -2,4 +2,8 @@ FROM mysql/mysql-server:latest
 
 WORKDIR /db
 COPY . .
-RUN mysql -u locadorauser -plocadorapass locadora < database.sql
+
+ENV MYSQL_ROOT_PASSWORD 'root'
+ENV MYSQL_ALLOW_EMPTY_PASSWORD 1
+
+ADD database.sql /docker-entrypoint-initdb.d
