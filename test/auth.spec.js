@@ -1,21 +1,26 @@
 /* eslint-disable no-undef */
 const request = require('supertest');
-const express = require('express');
+const app = require('../server');
 
-const app = express();
+let accessToken = '';
 
 describe('Check the Auth routes', () => {
-  it('GET /login', (done) => {
+  it('POST /api/login', (done) => {
     request(app)
-      .get('/login')
-      .set('Accept', 'application/json')
+      .post('/api/login')
+      .send({ email: 'bernardo.amaral85@gmail.com', password: 'senha123' })
       .expect('Content-Type', /json/)
-      .expect(200, done);
+      .expect(200)
+      .end((error, response) => {
+        accessToken = response.body.token;
+        done();
+      });
   });
 
-  it('GET /logout', (done) => {
+  it('POST /api/v1/logout', (done) => {
     request(app)
-      .get('/logout')
+      .post('/api/v1/logout')
+      .send({ userId: 1, token: accessToken })
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(200, done);

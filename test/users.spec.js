@@ -1,8 +1,6 @@
 /* eslint-disable no-undef */
 const request = require('supertest');
-const express = require('express');
-
-const app = express();
+const app = require('../server');
 
 describe('Check the Users routes', () => {
   it('GET /api/v1/users', (done) => {
@@ -13,13 +11,13 @@ describe('Check the Users routes', () => {
       .expect(200, done);
   });
 
-  // it('GET /users/:userId', (done) => {
-  //   request(app)
-  //     .get('/api/v1/users/1')
-  //     .set('Accept', 'application/json')
-  //     .expect('Content-Type', /json/)
-  //     .expect(200, done);
-  // });
+  it('GET /users/:userId', (done) => {
+    request(app)
+      .get('/api/v1/users/1')
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(200, done);
+  });
 
   // it('POST /users', (done) => {
   //   request(app)
