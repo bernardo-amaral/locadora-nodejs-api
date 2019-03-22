@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha ./test/*.spec.js --reporter spec --exit",
+    "build": "./node_modules/.bin/mocha ./test/*.spec.js --reporter spec --exit",
     "start": "node server.js",
     "lint": "./node_modules/.bin/eslint app/*js"
   },
