@@ -1,7 +1,9 @@
+sudo: required
 language: node_js
-
 services:
   - docker
+env:
+  DOCKER_COMPOSE_VERSION: 1.6.2
 
 before_install:
   - docker-compose up --build
