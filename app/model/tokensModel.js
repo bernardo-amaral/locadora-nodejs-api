@@ -3,24 +3,24 @@ const sql = require('./database');
 class Token {
   static storageToken(token, userId, result) {
     this.disableUsersTokens(userId, () => {
-      sql.query('INSERT INTO tokens SET token = ?, user_id = ?', [token, userId], (error, response) => {
-        if (error) {
-          result(error, null);
-        } else {
-          result(null, response);
-        }
-      });
+      const query = {
+        text: 'INSERT INTO tokens (token, user_id) VALUES ($1, $2)',
+        values: [token, userId],
+      };
+      sql.query(query)
+        .then(response => result(null, response.rows))
+        .catch(e => e.stack);
     });
   }
 
   static disableUsersTokens(userId, result) {
-    sql.query('UPDATE tokens SET active = ? WHERE user_id = ?', ['N', userId], (error, response) => {
-      if (error) {
-        result(error, null);
-      } else {
-        result(null, response);
-      }
-    });
+    const query = {
+      text: 'UPDATE tokens SET active = $1 WHERE user_id = $2',
+      values: ['N', userId],
+    };
+    sql.query(query)
+      .then(response => result(null, response.rows))
+      .catch(e => result(e.stack));
   }
 
   static checkTokenStatus(token, result) {

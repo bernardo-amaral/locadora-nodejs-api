@@ -8,13 +8,13 @@ class User {
   }
 
   static login(user, result) {
-    sql.query('SELECT user_id FROM users WHERE email = ? AND password = ?', [user.email, user.password], (error, rows) => {
-      if (error) {
-        result(error, null);
-      } else {
-        result(null, (rows.length > 0), JSON.parse(JSON.stringify(rows))[0].user_id);
-      }
-    });
+    const query = {
+      text: 'SELECT user_id FROM users WHERE email = $1 AND password = $2',
+      values: [user.email, user.password],
+    };
+    sql.query(query)
+      .then(response => result(null, (response.rows.length > 0), response.rows[0].user_id))
+      .catch(e => result(e.stack));
   }
 
   static createUser(newUser, result) {
