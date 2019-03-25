@@ -3,14 +3,12 @@ version: '3.2'
 services:
   db:
     container_name: api-db
-    image: mysql:latest
+    build: ./.docker/db
     ports:
       - "3307:3306"
     volumes:
       - /var/lib/mysql:/var/lib/mysql
-      - ./docker/db/database.sql:/docker-entrypoint-initdb.d/dump.sql
-      - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
-    command: --default-authentication-plugin=mysql_native_password --explicit_defaults_for_timestamp
+    command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=root
