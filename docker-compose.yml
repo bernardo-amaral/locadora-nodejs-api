@@ -1,28 +1,15 @@
 version: '3.2'
 
 services:
-  # db:
-  #   container_name: api-db
-  #   build: ./.docker/db
-  #   ports:
-  #     - "3307:3306"
-  #   volumes:
-  #     - /var/lib/mysql:/var/lib/mysql
-  #   command: --default-authentication-plugin=mysql_native_password
-  #   restart: always
-  #   environment:
-  #     - MYSQL_ROOT_PASSWORD=root
-  #     - MYSQL_USER=apiadmin
-  #     - MYSQL_PASSWORD=apipass
-  #     - MYSQL_DATABASE=myapi
-
-  postgresql:
+   postgresql:
     container_name: apidb
     build: ./.docker/pg
     ports:
-      - "5435:5432"
+      - "5432:5432"
+      - "5435:5435"
     environment:
       - POSTGRES_USER=apiadmin
       - POSTGRES_PASSWORD=apipass
       - POSTGRES_DB=myapi
+      - POSTGRES_PORT=5435
       - PG_TRUST_LOCALNET=true
