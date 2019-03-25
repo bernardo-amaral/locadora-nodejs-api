@@ -9,7 +9,8 @@ services:
     volumes:
       - /var/lib/mysql:/var/lib/mysql
       - ./docker/db/database.sql:/docker-entrypoint-initdb.d/dump.sql
-    command: --default-authentication-plugin=mysql_native_password
+      - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
+    command: --default-authentication-plugin=mysql_native_password --explicit_defaults_for_timestamp
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=root
