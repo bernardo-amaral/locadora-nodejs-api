@@ -6,6 +6,9 @@ env:
   DOCKER_COMPOSE_VERSION: 1.6.2
 node_js:
     '10.15.1'
+before_install:
+  - sudo apt-get update
+  - sudo apt-get -y install lxc-docker
 install:
     npm install
 before_script:
