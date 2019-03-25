@@ -6,14 +6,15 @@ env:
   DOCKER_COMPOSE_VERSION: 1.6.2
 
 before_install:
-  - docker-compose up --build
+  - docker-compose up
 
 node_js:
     '10.15.1'
 install:
     npm install
 before_script:
-    npm run lint
+    - docker-compose build
+    - npm run lint
 script:
-    npm run build
-    npm test
+    - npm run build
+    - npm test
