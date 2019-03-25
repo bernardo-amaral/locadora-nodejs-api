@@ -12,7 +12,7 @@ class Movie {
       if (error) {
         result(error, null);
       } else {
-        result(null, response);
+        result(null, response.rows);
       }
     });
   }
@@ -22,7 +22,7 @@ class Movie {
       if (error) {
         result(null, error);
       } else {
-        result(null, response);
+        result(null, response.rows);
       }
     });
   }
@@ -40,7 +40,7 @@ class Movie {
       if (rows.length > 0) {
         sql.query('UPDATE movies SET quantity = (quantity + 1) WHERE movie_id = ?', movieId, (error, response) => {
           sql.query('UPDATE users_movies SET rented = ? WHERE movie_id = ? AND user_id = ?', ['N', movieId, userId]);
-          result(null, response);
+          result(null, response.rows);
         });
       } else {
         result(null, 'User dont have this movie');

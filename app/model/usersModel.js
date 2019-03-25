@@ -28,23 +28,22 @@ class User {
   }
 
   static getById(userId, result) {
-    sql.query('SELECT * FROM users WHERE user_id = ? ', userId, (error, response) => {
-      if (error) {
-        result(error, null);
-      } else {
-        result(null, response);
-      }
-    });
+    const query = {
+      text: 'SELECT * FROM users WHERE user_id = $1 ',
+      values: [userId],
+    };
+    sql.query(query)
+      .then(response => result(null, response.rows))
+      .catch(e => e.stack);
   }
 
   static getAll(result) {
-    sql.query('SELECT * FROM users ORDER BY user_id ASC', (error, response) => {
-      if (error) {
-        result(null, error);
-      } else {
-        result(null, response);
-      }
-    });
+    const query = {
+      text: 'SELECT * FROM users ORDER BY user_id ASC',
+    };
+    sql.query(query)
+      .then(response => result(null, response.rows))
+      .catch(e => e.stack);
   }
 
   static delete(id, result) {

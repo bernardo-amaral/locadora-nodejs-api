@@ -1,16 +1,11 @@
-const mysql = require('mysql');
+const { Client } = require('pg');
 
-// local mysql db connection
-const connection = mysql.createConnection({
-  host: '127.0.0.1',
-  user: 'apiadmin',
-  password: 'apipass',
-  database: 'myapi',
-  port: 3307,
-});
+const connectionString = 'postgres://apiadmin:apipass@localhost/myapi';
 
-connection.connect((err) => {
+const pg = new Client({ connectionString });
+
+pg.connect((err) => {
   if (err) throw err;
 });
 
-module.exports = connection;
+module.exports = pg;
