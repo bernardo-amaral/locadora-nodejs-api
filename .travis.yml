@@ -7,7 +7,6 @@ env:
 
 before_install:
   - docker-compose build
-  - docker-compose up
 
 node_js:
     '10.15.1'
