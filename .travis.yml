@@ -1,4 +1,5 @@
 sudo: required
+privileged: true
 language: node_js
 services:
   - docker
