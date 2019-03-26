@@ -1,18 +1,29 @@
 sudo: required
 privileged: true
 language: node_js
+
 services:
   - docker
+
 env:
   DOCKER_COMPOSE_VERSION: 1.6.2
+
 node_js:
     '10.15.1'
 
-install:
+before_install:
+  - sudo apt-get update
+  # - sudo service postgresql stop
+  # - while sudo lsof -Pi :5432 -sTCP:LISTEN -t; do sleep 1; done
   - docker-compose build
+  - docker-compose up -d
+  - docker ps
+
+install:
   - npm install
+
 before_script:
     - npm run lint
+
 script:
-    - docker-compose up -d
     - npm test
