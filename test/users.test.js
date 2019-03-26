@@ -5,8 +5,8 @@ const app = require('../server');
 
 let lastInsertedUserId = '';
 
-describe('Check the Users routes', () => {
-  it('GET /api/v1/users', (done) => {
+describe('Check the Users', () => {
+  it('List all users', (done) => {
     request(app)
       .get('/api/v1/users')
       .set('Accept', 'application/json')
@@ -14,7 +14,7 @@ describe('Check the Users routes', () => {
       .expect(200, done);
   });
 
-  it('GET /api/v1/users/:userId', (done) => {
+  it('Retrieve one user from system', (done) => {
     request(app)
       .get('/api/v1/users/1')
       .set('Accept', 'application/json')
@@ -22,7 +22,7 @@ describe('Check the Users routes', () => {
       .expect(200, done);
   });
 
-  it('POST /api/v1/users', (done) => {
+  it('Create an new user', (done) => {
     const randomUserAge = Math.floor(Math.random() * (100 - 14)) + 14;
     request(app)
       .post('/api/v1/users')
@@ -36,7 +36,7 @@ describe('Check the Users routes', () => {
       });
   });
 
-  it('DELETE /api/v1/users/:userId', (done) => {
+  it('Delete the last user created', (done) => {
     request(app)
       .delete(`/api/v1/users/${lastInsertedUserId}`)
       .set('Accept', 'application/json')

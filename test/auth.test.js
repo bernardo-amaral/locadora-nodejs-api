@@ -4,8 +4,8 @@ const app = require('../server');
 
 let accessToken = '';
 
-describe('Check the Auth routes', () => {
-  it('POST /api/login', (done) => {
+describe('Check the authentication', () => {
+  it('Login into system', (done) => {
     request(app)
       .post('/api/login')
       .send({ email: 'bernardo.amaral85@gmail.com', password: 'senha123' })
@@ -17,7 +17,7 @@ describe('Check the Auth routes', () => {
       });
   });
 
-  it('POST /api/v1/logout', (done) => {
+  it('Logout from system', (done) => {
     request(app)
       .post('/api/v1/logout')
       .send({ userId: 1, token: accessToken })
