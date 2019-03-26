@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/bernardo-amaral/locadora-nodejs-api.svg?branch=master)](https://travis-ci.org/bernardo-amaral/locadora-nodejs-api)
+[![Build Status](https://travis-ci.org/bernardo-amaral/nodejs-api-jwt.svg?branch=master)](https://travis-ci.org/bernardo-amaral/nodejs-api-jwt)
 
 # NodeJs API Server
 
