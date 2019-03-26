@@ -19,12 +19,12 @@ class User {
 
   static createUser(newUser, result) {
     const query = {
-      text: 'INSERT INTO users (name, email, password) VALUES ($1, $2, $3)',
+      text: 'INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING user_id',
       values: [newUser.name, newUser.email, newUser.password],
     };
     sql.query(query)
-      .then(response => result(null, (response.rowCount > 0)))
-      .catch(e => result(e.stack));
+      .then(response => result(null, { sucess: (response.rowCount > 0), userId: response.rows[0].user_id }))
+      .catch(e => result(null, e.stack));
   }
 
   static getById(userId, result) {
@@ -47,13 +47,13 @@ class User {
   }
 
   static delete(id, result) {
-    sql.query('DELETE FROM users WHERE user_id = ?', [id], (error, response) => {
-      if (error) {
-        result(null, error);
-      } else {
-        result(null, response);
-      }
-    });
+    const query = {
+      text: 'DELETE FROM users WHERE user_id = $1 ',
+      values: [id],
+    };
+    sql.query(query)
+      .then(response => result(null, (response.rowCount > 0)))
+      .catch(e => result(e.stack));
   }
 }
 

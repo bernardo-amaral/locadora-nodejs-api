@@ -47,9 +47,9 @@ class UserController {
   }
 
   static delete(request, response) {
-    User.delete(request.params.userId, (error, user) => {
+    User.delete(request.params.userId, (error, dbResponse) => {
       if (error) { response.send(error); }
-      response.json(user);
+      response.json({ success: dbResponse });
     });
   }
 
@@ -59,9 +59,9 @@ class UserController {
       response.status(400).send({ error: true, message: 'Please provide user required fields' });
     } else {
       newUser.password = crypto.createHash('md5').update(newUser.password).digest('hex');
-      User.createUser(newUser, (error, user) => {
+      User.createUser(newUser, (error, dbResponse) => {
         if (error) { response.send(error); }
-        response.json(user);
+        response.json(dbResponse);
       });
     }
   }
