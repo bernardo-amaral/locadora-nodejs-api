@@ -2,6 +2,7 @@ const sql = require('./database');
 
 class User {
   constructor(user) {
+    this.userId = user.userId;
     this.name = user.name;
     this.email = user.email;
     this.password = user.password;
@@ -18,10 +19,16 @@ class User {
   }
 
   static createUser(newUser, result) {
-    const query = {
+    let query = {
       text: 'INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING user_id',
       values: [newUser.name, newUser.email, newUser.password],
     };
+    if (newUser.userId) {
+      query = {
+        text: 'INSERT INTO users (user_id, name, email, password) VALUES ($1, $2, $3, $4) RETURNING user_id',
+        values: [newUser.userId, newUser.name, newUser.email, newUser.password],
+      };
+    }
     sql.query(query)
       .then(response => result(null, { sucess: (response.rowCount > 0), userId: response.rows[0].user_id }))
       .catch(e => result(null, e.stack));
