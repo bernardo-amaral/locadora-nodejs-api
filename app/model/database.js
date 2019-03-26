@@ -1,6 +1,6 @@
 const { Client } = require('pg');
 
-const connectionString = 'postgres://apiadmin:apipass@localhost/myapi';
+const connectionString = 'postgres://apiadmin:apipass@localhost:5435/myapi';
 
 const pg = new Client({ connectionString });
 
