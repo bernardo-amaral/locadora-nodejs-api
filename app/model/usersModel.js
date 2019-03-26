@@ -30,7 +30,10 @@ class User {
       };
     }
     sql.query(query)
-      .then(response => result(null, { sucess: (response.rowCount > 0), userId: response.rows[0].user_id }))
+      .then(response => result(null, {
+        sucess: (response.rowCount > 0),
+        userId: response.rows[0].user_id,
+      }))
       .catch(e => result(null, e.stack));
   }
 
