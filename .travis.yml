@@ -10,9 +10,11 @@ node_js:
 before_install:
   - sudo apt-get update
 install:
+    sudo docker-compose build
     npm install
 before_script:
     - npm run lint
-script:
+script: 
+    - sudo docker-compose up -d
     - npm run build
     - npm test
