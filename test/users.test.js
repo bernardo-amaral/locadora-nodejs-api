@@ -19,13 +19,15 @@ describe('Check the Users routes', () => {
       .expect(200, done);
   });
 
-  // it('POST /users', (done) => {
-  //   request(app)
-  //     .post('/api/v1/users')
-  //     .set('Accept', 'application/json')
-  //     .expect('Content-Type', /json/)
-  //     .expect(200, done);
-  // });
+  it('POST /api/v1/users', (done) => {
+    const randomUserAge = Math.floor(Math.random() * (100 - 14)) + 14;
+    request(app)
+      .post('/api/v1/users')
+      .send({ name: 'john doe', email: `john${randomUserAge}@doe.com`, password: 'pass123' })
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(200, done);
+  });
 
   // it('DELETE /users/:userId', (done) => {
   //   request(app)

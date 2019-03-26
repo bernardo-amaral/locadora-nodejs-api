@@ -18,13 +18,13 @@ class User {
   }
 
   static createUser(newUser, result) {
-    sql.query('INSERT INTO users SET ?', newUser, (error, response) => {
-      if (error) {
-        result(error, null);
-      } else {
-        result(null, response);
-      }
-    });
+    const query = {
+      text: 'INSERT INTO users (name, email, password) VALUES ($1, $2, $3)',
+      values: [newUser.name, newUser.email, newUser.password],
+    };
+    sql.query(query)
+      .then(response => result(null, (response.rowCount > 0)))
+      .catch(e => result(e.stack));
   }
 
   static getById(userId, result) {

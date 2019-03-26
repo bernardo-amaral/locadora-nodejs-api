@@ -60,9 +60,7 @@ class UserController {
     } else {
       newUser.password = crypto.createHash('md5').update(newUser.password).digest('hex');
       User.createUser(newUser, (error, user) => {
-        if (error) {
-          response.send(error);
-        }
+        if (error) { response.send(error); }
         response.json(user);
       });
     }
