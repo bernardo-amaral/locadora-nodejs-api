@@ -1,10 +1,10 @@
 FROM node:latest
 
-ARG PROXY
+# ARG PROXY
 
-ENV http_proxy="http://$PROXY/"
-ENV https_proxy="http://$PROXY/"
-ENV no_proxy=""
+# ENV http_proxy="http://$PROXY/"
+# ENV https_proxy="http://$PROXY/"
+# ENV no_proxy=""
 
 ADD . /app
 

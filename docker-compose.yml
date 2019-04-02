@@ -5,8 +5,8 @@ services:
     container_name: nodeapi
     build:
       context: ./.docker/node
-      args:
-        - PROXY=
+      # args:
+      #   - PROXY=10.203.222.109:3128
     ports:
       - "3000:3000"
     volumes:
