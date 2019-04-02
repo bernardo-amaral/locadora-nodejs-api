@@ -15,12 +15,12 @@ node_js:
 before_install:
   - sudo apt-get update
   - docker-compose build
-  - docker-compose up
+  - docker-compose up -d
   - docker ps -a
   - docker run nodeapi npm install
 
-# install:
-#   - npm install
+ install:
+   - npm install
 
 before_script:
     - docker run nodeapi npm run lint
