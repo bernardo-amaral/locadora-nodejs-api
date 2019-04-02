@@ -1,8 +1,17 @@
-FROM node:7.7.2-alpine
+FROM node:latest
 
-WORKDIR /usr/app
+ARG PROXY
 
-COPY package.json .
-RUN npm install --quiet
+ENV http_proxy="http://$PROXY/"
+ENV https_proxy="http://$PROXY/"
+ENV no_proxy=""
 
-COPY . .
+ADD . /app
+
+WORKDIR /app
+VOLUME ["/app"]
+
+RUN npm install
+
+EXPOSE 3000
+CMD [ "npm", "start" ]
