@@ -7,7 +7,7 @@ services:
 
 env:
   DOCKER_COMPOSE_VERSION: 1.6.2
-  PORT: 8080
+  PORT: 3000
 
 node_js:
     '10.15.1'
@@ -27,4 +27,4 @@ before_script:
     - npm run lint
 
 script:
-    - npm test
+    - docker exec -it nodeapi npm test
