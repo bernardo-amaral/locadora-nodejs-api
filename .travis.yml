@@ -17,7 +17,7 @@ before_install:
   - docker-compose build
   - docker-compose up -d
   - docker ps
-  - docker exec -it nodeapi npm install
+  - docker exec -it nodeapi npm run lint
 
 before_script:
     - docker exec -it nodeapi npm run lint
