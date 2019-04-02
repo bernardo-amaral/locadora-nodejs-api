@@ -14,18 +14,16 @@ node_js:
 
 before_install:
   - sudo apt-get update
-  # - sudo service postgresql stop
-  # - while sudo lsof -Pi :5432 -sTCP:LISTEN -t; do sleep 1; done
   - docker-compose build
   - docker-compose up -d
   - docker ps
-  - docker exec -ti nodeapi npm install
+  - docker exec -it nodeapi npm install
 
 install:
-  - docker exec -ti nodeapi npm install
+  - docker exec -it nodeapi npm install
 
 before_script:
-    - docker exec -ti nodeapi npm run lint
+    - docker exec -it nodeapi npm run lint
 
 script:
-    - docker exec -ti nodeapi npm test
+    - docker exec -it nodeapi npm test
