@@ -6,7 +6,7 @@ services:
     build:
       context: ./.docker/node
       args:
-        - PROXY=10.203.222.109:3128
+        - PROXY=
     ports:
       - "3000:3000"
     volumes:
