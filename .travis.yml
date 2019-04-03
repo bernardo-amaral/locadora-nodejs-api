@@ -14,10 +14,9 @@ node_js:
 
 before_install:
   - sudo apt-get update
-  - docker-compose build
-  - docker-compose up -d
+  - docker-compose up --build -d
   - docker ps -a
-  - docker exec -it nodeapi bash
+  - docker exec -ti nodeapi bash
   - npm install
   - npm test
 
