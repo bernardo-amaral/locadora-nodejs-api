@@ -3,8 +3,7 @@ version: '3.2'
 services:
    nodejs:
     container_name: nodeapi
-    build:
-      context: ./.docker/node
+    build: ./.docker/node
     ports:
       - "3000:3000"
     volumes:
