@@ -9,7 +9,7 @@ FROM node:latest
 ADD . /app
 
 RUN pwd
-RUN ls -l
+RUN ls -l /app
 
 RUN npm install
 
