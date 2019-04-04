@@ -23,6 +23,7 @@ before_install:
   - docker-compose --version
   - docker-compose up -d --build
   - docker ps -a
+  - docker exec -it nodeapi bash
   - docker exec -it nodeapi bash -c "npm install"
 
 script:
