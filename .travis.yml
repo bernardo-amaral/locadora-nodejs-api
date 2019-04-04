@@ -23,9 +23,9 @@ before_install:
   - docker-compose --version
   - docker-compose up -d --build
   - docker ps -a
-  - docker run nodeapi npm install
+  - docker exec nodeapi npm install
 
 script:
   - docker ps -a
-  - docker run nodeapi npm test
+  - docker exec nodeapi npm test
 
