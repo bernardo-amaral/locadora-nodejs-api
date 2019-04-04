@@ -8,16 +8,13 @@ FROM node:latest
 
 ADD . /app
 
-WORKDIR /app
-
-COPY . .
-
-VOLUME ["/app"]
-
 RUN pwd
 RUN ls -l
 
 RUN npm install
+
+WORKDIR /app
+VOLUME ["/app"]
 
 EXPOSE 3000
 CMD [ "npm", "start" ]
