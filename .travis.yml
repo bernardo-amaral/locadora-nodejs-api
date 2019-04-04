@@ -1,13 +1,9 @@
-dist: xenial
-
-sudo: required
 privileged: true
 language: node_js
+cache: npm
 
-addons:
-  apt:
-    packages:
-      - docker-ce
+services:
+  - docker
 
 env:
   DOCKER_COMPOSE_VERSION: 1.23.2
@@ -16,19 +12,12 @@ node_js:
     '10.15.1'
 
 before_install:
-  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-  - sudo apt-get update
-  - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
-
   - docker-compose --version
   - docker-compose build
   - docker-compose up -d
-  - docker ps -a
-  - docker exec -it nodeapi bash
+  - docker stats --no-stream
   - docker exec -it nodeapi bash -c "npm install"
 
 script:
-  - docker ps -a
   - docker exec -it nodeapi bash -c "npm test"
 
