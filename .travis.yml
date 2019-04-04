@@ -1,7 +1,6 @@
 sudo: required
 privileged: true
 language: node_js
-cache: npm
 
 addons:
   apt:
