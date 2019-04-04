@@ -9,6 +9,9 @@ FROM node:latest
 ADD . /app
 
 WORKDIR /app
+
+COPY . .
+
 VOLUME ["/app"]
 
 RUN npm install
