@@ -2,14 +2,16 @@ FROM node:latest
 
 # ARG PROXY
 
-# ENV http_proxy="http://$PROXY/"
-# ENV https_proxy="http://$PROXY/"
+# ENV http_proxy="http://10.203.222.109:3128/"
+# ENV https_proxy="http://10.203.222.109:3128/"
 # ENV no_proxy=""
 
 ADD . /app
 
 WORKDIR /app
 VOLUME ["/app"]
+
+RUN ls -l
 
 RUN npm install
 
