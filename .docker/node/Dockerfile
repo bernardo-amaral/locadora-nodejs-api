@@ -11,8 +11,6 @@ ADD . /app
 WORKDIR /app
 VOLUME ["/app"]
 
-RUN ls -l
-
 RUN npm install
 
 EXPOSE 3000
