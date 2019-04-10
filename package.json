@@ -6,7 +6,7 @@
   "scripts": {
     "test": "./node_modules/.bin/mocha ./test/*.test.js --reporter spec --exit",
     "build": "npm run lint",
-    "start": "nodemon server.js --ignore tests/",
+    "start": "node server.js",
     "lint": "./node_modules/.bin/eslint app/*js"
   },
   "repository": {
@@ -33,7 +33,6 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
     "mocha": "^6.1.2",
-    "nodemon": "^1.18.11",
     "supertest": "^4.0.2"
   },
   "nodemonConfig": {
