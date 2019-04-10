@@ -12,11 +12,15 @@ node_js:
     '10.15.1'
 
 before_install:
+  - ulimit -c unlimited
   - docker-compose build
   - docker-compose up -d
   - docker stats --no-stream
   - docker ps
   - docker exec -it nodeapi bash
+
+before_script:
+  - ulimit -c unlimited -S
 
 script:
   - docker exec -it nodeapi bash -c "npm test"
