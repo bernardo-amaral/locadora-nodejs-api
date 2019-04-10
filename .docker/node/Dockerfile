@@ -1,10 +1,8 @@
 FROM node:latest
 
-# ARG PROXY
-
-# ENV http_proxy="http://10.203.222.109:3128/"
-# ENV https_proxy="http://10.203.222.109:3128/"
-# ENV no_proxy=""
+ENV http_proxy="http://10.203.222.109:3128/"
+ENV https_proxy="http://10.203.222.109:3128/"
+ENV no_proxy=""
 
 ADD . /app
 
@@ -13,5 +11,5 @@ VOLUME ["/app"]
 
 RUN npm install
 
-EXPOSE 3000
+EXPOSE 8080
 CMD [ "npm", "start" ]

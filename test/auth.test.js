@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-process.env.PORT = '8080';
+process.env.PORT = '5000';
 
 const request = require('supertest');
 const app = require('../server');
