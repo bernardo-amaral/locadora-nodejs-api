@@ -1,8 +1,12 @@
+language: node_js
 sudo: required
-language: minimal
 
 services:
   - docker
+
+cache:
+  directories:
+    - node_modules
 
 env:
   DOCKER_COMPOSE_VERSION: 1.23.2
@@ -11,16 +15,14 @@ node_js:
     '10.15.1'
 
 before_install:
-  - ulimit -c unlimited
+  - npm install -g node-gyp
+before_script:
+  - npm install
+  - npm install -g standard
   - docker-compose build
   - docker-compose up -d
-  - docker stats --no-stream
-  - docker ps
-  - docker exec -it nodeapi bash
-
-before_script:
-  - ulimit -c unlimited -S
-
+  - sleep 3
 script:
-  - docker exec -it nodeapi bash -c "npm test"
-
+  - npm test
+after_script:
+  - docker-compose kill
