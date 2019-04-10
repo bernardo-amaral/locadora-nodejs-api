@@ -6,6 +6,9 @@ services:
     build:
       context: .
       dockerfile: ./.docker/node/Dockerfile
+    restart: always
+    depends_on:
+      - postgresql
     ports:
       - "3000:3000"
     volumes:
