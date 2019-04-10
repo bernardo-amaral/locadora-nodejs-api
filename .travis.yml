@@ -1,6 +1,5 @@
 privileged: true
 language: node_js
-cache: npm
 
 services:
   - docker
