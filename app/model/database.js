@@ -1,6 +1,7 @@
 const { Client } = require('pg');
+const config = require('../../database');
 
-const connectionString = 'postgres://apiadmin:apipass@apidb:5432/myapi';
+const connectionString = `postgres://${config.dev.user}:${config.dev.password}@${config.dev.host}:${config.dev.port}/${config.dev.database}`;
 
 const pg = new Client({ connectionString });
 

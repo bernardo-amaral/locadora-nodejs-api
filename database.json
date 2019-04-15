@@ -1,0 +1,10 @@
+{
+  "dev": {
+    "driver": "pg",
+    "host": "apidb",
+    "port": "5432",
+    "user": "apiadmin",
+    "password": "apipass",
+    "database": "myapi"
+  }
+}
