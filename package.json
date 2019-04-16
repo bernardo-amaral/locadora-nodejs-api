@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bernardo-amaral/locadora-nodejs-api.git"
+    "url": "git+https://github.com/bernardo-amaral/nodejs-api-jwt.git"
   },
-  "author": "",
+  "author": "Bernardo Amaral",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/bernardo-amaral/locadora-nodejs-api/issues"
+    "url": "https://github.com/bernardo-amaral/nodejs-api-jwt/issues"
   },
-  "homepage": "https://github.com/bernardo-amaral/locadora-nodejs-api#readme",
+  "homepage": "https://github.com/bernardo-amaral/nodejs-api-jwt#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
