@@ -3,7 +3,7 @@ process.env.PORT = '5000';
 
 const { assert } = require('chai');
 const request = require('supertest');
-const app = require('../server');
+const app = require('../app/server');
 
 describe('Check the Users', () => {
   it('List all users', (done) => {
