@@ -8,6 +8,12 @@ cache:
   directories:
     - node_modules
 
+notifications:
+  email:
+    recipients:
+      - bernardo.amaral85@gmail.com
+    on_failure: always
+
 env:
   DOCKER_COMPOSE_VERSION: 1.23.2
 
