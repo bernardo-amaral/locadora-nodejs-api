@@ -2,11 +2,11 @@
   "name": "bernardo-node-api",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "./app/server.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha ./test/*.test.js --reporter spec --exit",
     "build": "npm run lint",
-    "start": "node server.js",
+    "start": "node ./app/server.js",
     "lint": "./node_modules/.bin/eslint app/*js"
   },
   "repository": {
