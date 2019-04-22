@@ -40,5 +40,6 @@ deploy:
   api_key:
     secure: e3fc1ce6-2525-4ebc-8b24-ff33488a1067
   app: games-node-api
+  skip_cleanup: false
 
 after_deploy: "echo 'Heroku done!'"
