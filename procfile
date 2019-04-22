@@ -1,1 +1,1 @@
-heroku container:push web
+heroku container:push nodeapi
