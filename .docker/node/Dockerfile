@@ -10,7 +10,6 @@ WORKDIR /app
 VOLUME ["/app"]
 
 RUN npm install
-RUN npm run migrate up --config ./app/database.json
 
 EXPOSE 3000
 
