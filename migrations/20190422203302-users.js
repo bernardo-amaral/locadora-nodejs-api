@@ -52,7 +52,7 @@ exports.up = function (db, callback) {
   //   [3, 'Lola',	'lola@mailteste.com',	'e7d80ffeefa212b7c5c55700e4f7193e']
   // ];
 
-  db.insert('users', columnNameArray, valueArray, callback);
+  // db.insert('users', columnNameArray, valueArray, callback);
 };
 
 exports.down = function (db, callback) {
