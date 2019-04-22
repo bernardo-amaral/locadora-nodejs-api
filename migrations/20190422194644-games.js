@@ -1,9 +1,8 @@
 /* eslint-disable */
-'use strict';
 
-var dbm;
-var type;
-var seed;
+let dbm;
+let type;
+let seed;
 
 /**
   * We receive the dbmigrate dependency from dbmigrate initially.
@@ -20,11 +19,13 @@ exports.up = function(db, callback) {
   db.createTable('games', {
     id: {
       type: 'int',
-      primaryKey: true
+      primaryKey: true,
+      autoIncrement: true
     },
     name: {
       type: 'string',
-      length: 80
+      length: 80,
+      notNull: true,
     },
     plataform: {
       type: 'string',
@@ -41,7 +42,7 @@ exports.up = function(db, callback) {
     mode: {
       type: 'string',
       length: 80,
-      default: 'single-player'
+      defaultValue: 'single-player'
     },
     release_date: {
       type: 'date'
