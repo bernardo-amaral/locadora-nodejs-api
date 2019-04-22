@@ -42,12 +42,14 @@ exports.up = function (db, callback) {
     return callback();
   });
 
+  db.addIndex('users', 'users_email_key', 'email', ['unique'], callback);
+
   let columnNameArray = ['user_id', 'name', 'email', 'password'];
 
   let valueArray = [
-    ['1', 'Bernardo',	'bernardo.amaral85@gmail.com', 'e7d80ffeefa212b7c5c55700e4f7193e'],
-    ['2', 'Kira',	'kira@mailteste.com',	'e7d80ffeefa212b7c5c55700e4f7193e'],
-    ['3', 'Lola',	'lola@mailteste.com',	'e7d80ffeefa212b7c5c55700e4f7193e']
+    [1, 'Bernardo',	'bernardo.amaral85@gmail.com', 'e7d80ffeefa212b7c5c55700e4f7193e'],
+    [2, 'Kira',	'kira@mailteste.com',	'e7d80ffeefa212b7c5c55700e4f7193e'],
+    [3, 'Lola',	'lola@mailteste.com',	'e7d80ffeefa212b7c5c55700e4f7193e']
   ];
 
   db.insert('users', columnNameArray, valueArray, callback);
