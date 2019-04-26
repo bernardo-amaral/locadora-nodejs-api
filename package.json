@@ -8,7 +8,9 @@
     "build": "npm run lint",
     "start": "node ./app/server.js",
     "lint": "./node_modules/.bin/eslint app/*js",
-    "migrate": "node ./node_modules/db-migrate/bin/db-migrate --config ./app/database.json"
+    "migrate": "./node_modules/.bin/knex migrate:latest",
+    "seed": "./node_modules/.bin/knex seed:run",
+    "knex": "./node_modules/.bin/knex"
   },
   "repository": {
     "type": "git",
@@ -27,6 +29,7 @@
     "express": "^4.16.4",
     "express-jwt": "^5.3.1",
     "jsonwebtoken": "^8.5.1",
+    "knex": "^0.16.5",
     "pg": "^7.10.0",
     "promise": "^8.0.3"
   },

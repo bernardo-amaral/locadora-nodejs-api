@@ -29,7 +29,8 @@ before_script:
   - docker-compose up -d
   - sleep 3
 script:
-  - docker exec -it nodeapi bash -c "npm run migrate up"
+  - docker exec -it nodeapi bash -c "npm run migrate"
+  - docker exec -it nodeapi bash -c "npm run seed"
   - docker exec -it nodeapi bash -c "npm test"
 after_script:
   - docker-compose kill
