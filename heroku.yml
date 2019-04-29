@@ -1,0 +1,4 @@
+build:
+  docker:
+    node: ./.docker/node/Dockerfile
+    postgres: ./.docker/pg/Dockerfile
