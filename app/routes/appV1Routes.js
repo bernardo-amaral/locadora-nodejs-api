@@ -3,6 +3,7 @@ const Middleware = require('./appMiddleware');
 const Default = require('../controller/defaultController');
 const Users = require('../controller/usersController');
 const Movies = require('../controller/moviesController');
+const Games = require('../controller/moviesController');
 
 const routes = express.Router();
 
@@ -27,8 +28,8 @@ class Routes {
       .delete(Users.delete)
       .get(Users.getById);
 
-    apiRoutes.route('/movies')
-      .get(Movies.listAll);
+    apiRoutes.route('/games')
+      .get(Games.listAll);
 
     apiRoutes.route('/movies/rent/:movieId/:userId')
       .get(Movies.rentMovie);
