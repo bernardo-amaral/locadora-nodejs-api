@@ -1,0 +1,28 @@
+POST http://localhost:3000/api/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "bernardo.amaral85@gmail.com",
+    "password": "senha123"
+}
+
+###
+
+POST http://localhost:3000/api/v1/logout HTTP/1.1
+content-type: application/json
+
+{
+  "userId": 1
+}
+
+###
+
+GET http://localhost:3000/api/v1/users HTTP/1.1
+
+###
+
+GET http://localhost:3000/api/v1/games HTTP/1.1
+
+###
+
+GET http://localhost:3000/api/v1/user/games/1 HTTP/1.1
