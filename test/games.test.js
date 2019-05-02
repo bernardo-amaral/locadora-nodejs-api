@@ -21,4 +21,13 @@ describe('Check the Games', () => {
       .expect('Content-Type', /json/)
       .expect(200, done);
   });
+
+
+  it('List all games from userId "1" from platform "Super Nintendo"', (done) => {
+    request(app)
+      .get('/api/v1/user/games/1/Super%20Nintendo')
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(200, done);
+  });
 });

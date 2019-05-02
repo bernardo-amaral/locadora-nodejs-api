@@ -14,6 +14,13 @@ class GameController {
       response.json(user);
     });
   }
+
+  static getByUserAndPlatform(request, response) {
+    Game.getByUserAndPlatform(request.params.userId, request.params.platformName, (error, user) => {
+      if (error) { response.send(error); }
+      response.json(user);
+    });
+  }
 }
 
 module.exports = GameController;
