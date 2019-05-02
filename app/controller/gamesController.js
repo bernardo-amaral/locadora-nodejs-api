@@ -7,6 +7,13 @@ class GameController {
       response.send(game);
     });
   }
+
+  static getByUserId(request, response) {
+    Game.getByUserId(request.params.userId, (error, user) => {
+      if (error) { response.send(error); }
+      response.json(user);
+    });
+  }
 }
 
 module.exports = GameController;

@@ -2,7 +2,7 @@ const express = require('express');
 const Middleware = require('./appMiddleware');
 const Default = require('../controller/defaultController');
 const Users = require('../controller/usersController');
-const Games = require('../controller/moviesController');
+const Games = require('../controller/gamesController');
 
 const routes = express.Router();
 
@@ -24,7 +24,7 @@ class Routes {
       .post(Users.createAUser);
 
     apiRoutes.route('/user/games/:userId')
-      .get(Games.listAll);
+      .get(Games.getByUserId);
 
     apiRoutes.route('/users/:userId')
       .delete(Users.delete)

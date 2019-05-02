@@ -18,6 +18,19 @@ class Game {
       .then(response => result(null, response.rows))
       .catch(e => e.stack);
   }
+
+  static getByUserId(userId, result) {
+    const query = {
+      text: `SELECT g.* FROM games AS g
+             LEFT JOIN users_games AS ug ON (ug.game_id=g.game_id)
+             WHERE ug.user_id = $1
+             ORDER BY g.title ASC`,
+      values: [userId],
+    };
+    sql.query(query)
+      .then(response => result(null, response.rows))
+      .catch(e => e.stack);
+  }
 }
 
 module.exports = Game;
