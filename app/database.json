@@ -3,7 +3,7 @@
   "dev": {
     "driver": "pg",
     "host": "apidb",
-    "port": "5432",
+    "port": "32769",
     "user": "apiadmin",
     "password": "apipass",
     "database": "myapi"
