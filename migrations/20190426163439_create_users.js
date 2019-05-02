@@ -1,4 +1,4 @@
-/* eslint-disable func-names */
+/* eslint-disable */
 
 exports.up = function (knex) {
   return knex.schema.createTable('users', (table) => {
