@@ -25,7 +25,7 @@ describe('Check the Games', () => {
 
   it('List all games from userId "1" from platform "Super Nintendo"', (done) => {
     request(app)
-      .get('/api/v1/user/games/1/Super%20Nintendo')
+      .get('/api/v1/user/games/1/2')
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(200, done);
