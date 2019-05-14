@@ -1,4 +1,4 @@
-/* eslint-disable no-undef */
+/* eslint-disable */
 process.env.PORT = '5000';
 
 const { assert } = require('chai');
