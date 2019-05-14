@@ -12,7 +12,17 @@ class Game {
 
   static getAll(result) {
     const query = {
-      text: 'SELECT * FROM games ORDER BY title ASC',
+      text: `SELECT g.game_id,
+                    g.title,
+                    g.developer,
+                    g.genre,
+                    g.release_year,
+                    g.cover_picture,
+                    g.mode,
+                    c.name AS console
+             FROM games AS g
+             LEFT JOIN consoles AS c ON (c.console_id=g.console_id)
+             ORDER BY g.title ASC`,
     };
     sql.query(query)
       .then(response => result(null, response.rows))
@@ -21,8 +31,17 @@ class Game {
 
   static getByUserId(userId, result) {
     const query = {
-      text: `SELECT g.* FROM games AS g
+      text: `SELECT g.game_id,
+                    g.title,
+                    g.developer,
+                    g.genre,
+                    g.release_year,
+                    g.cover_picture,
+                    g.mode,
+                    c.name AS console
+             FROM games AS g
              LEFT JOIN users_games AS ug ON (ug.game_id=g.game_id)
+             LEFT JOIN consoles AS c ON (c.console_id=g.console_id)
              WHERE ug.user_id = $1
              ORDER BY g.title ASC`,
       values: [userId],
@@ -32,14 +51,23 @@ class Game {
       .catch(e => e.stack);
   }
 
-  static getByUserAndPlatform(userId, platformName, result) {
+  static getByUserAndPlatform(userId, consoleId, result) {
     const query = {
-      text: `SELECT g.* FROM games AS g
+      text: `SELECT g.game_id,
+                    g.title,
+                    g.developer,
+                    g.genre,
+                    g.release_year,
+                    g.cover_picture,
+                    g.mode,
+                    c.name AS console
+             FROM games AS g
              LEFT JOIN users_games AS ug ON (ug.game_id=g.game_id)
+             LEFT JOIN consoles AS c ON (c.console_id=g.console_id)
              WHERE ug.user_id = $1
-             AND g.platform = $2
+             AND c.console_id = $2
              ORDER BY g.title ASC`,
-      values: [userId, platformName],
+      values: [userId, consoleId],
     };
     sql.query(query)
       .then(response => result(null, response.rows))

@@ -23,7 +23,7 @@ class Routes {
       .get(Users.listAll)
       .post(Users.createAUser);
 
-    apiRoutes.route('/user/games/:userId/:platformName')
+    apiRoutes.route('/user/games/:userId/:consoleId')
       .get(Games.getByUserAndPlatform);
 
     apiRoutes.route('/user/games/:userId')

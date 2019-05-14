@@ -16,7 +16,7 @@ class GameController {
   }
 
   static getByUserAndPlatform(request, response) {
-    Game.getByUserAndPlatform(request.params.userId, request.params.platformName, (error, user) => {
+    Game.getByUserAndPlatform(request.params.userId, request.params.consoleId, (error, user) => {
       if (error) { response.send(error); }
       response.json(user);
     });
