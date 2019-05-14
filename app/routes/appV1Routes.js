@@ -3,6 +3,7 @@ const Middleware = require('./appMiddleware');
 const Default = require('../controller/defaultController');
 const Users = require('../controller/usersController');
 const Games = require('../controller/gamesController');
+const Consoles = require('../controller/consolesController');
 
 const routes = express.Router();
 
@@ -35,6 +36,9 @@ class Routes {
 
     apiRoutes.route('/games')
       .get(Games.listAll);
+
+    apiRoutes.route('/consoles')
+      .get(Consoles.listAll);
 
     routes.use('/v1', apiRoutes);
     return routes;
