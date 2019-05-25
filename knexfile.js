@@ -1,5 +1,5 @@
 // Update with your config settings.
-const config = require('./app/database');
+const config = require('./config');
 
 module.exports = {
 
@@ -13,11 +13,11 @@ module.exports = {
   development: {
     client: 'postgresql',
     connection: {
-      host: config.dev.host,
-      port: config.dev.port,
-      database: config.dev.database,
-      user: config.dev.user,
-      password: config.dev.password,
+      host: config.host,
+      port: config.port,
+      database: config.database,
+      user: config.user,
+      password: config.password,
     },
     pool: {
       min: 2,
@@ -35,9 +35,11 @@ module.exports = {
   production: {
     client: 'postgresql',
     connection: {
-      database: 'my_db',
-      user: 'username',
-      password: 'password',
+      host: config.host,
+      port: config.port,
+      database: config.database,
+      user: config.user,
+      password: config.password,
     },
     pool: {
       min: 2,
@@ -45,6 +47,9 @@ module.exports = {
     },
     migrations: {
       tableName: 'knex_migrations',
+    },
+    seeds: {
+      directory: './seeds',
     },
   },
 

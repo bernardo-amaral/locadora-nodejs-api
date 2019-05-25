@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 const User = require('../model/usersModel');
 const TokenVerify = require('../model/tokensModel');
-const config = require('../config');
+const config = require('../../config');
 
 class UserController {
   static listAll(request, response) {
