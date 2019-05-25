@@ -16,6 +16,7 @@ notifications:
 
 env:
   DOCKER_COMPOSE_VERSION: 1.23.2
+  NODE_ENV: test
 
 node_js:
     '10.15.1'
