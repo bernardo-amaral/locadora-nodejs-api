@@ -1,1 +1,1 @@
-heroku container:push web--recursive
+web: node server.js
