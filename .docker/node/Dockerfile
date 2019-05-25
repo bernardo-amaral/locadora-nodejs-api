@@ -4,7 +4,7 @@ FROM node:latest
 # ENV https_proxy="http://10.203.222.109:3128/"
 # ENV no_proxy=""
 
-ENV NODE_ENV=dev
+ENV NODE_ENV=development
 
 ADD . /app
 
