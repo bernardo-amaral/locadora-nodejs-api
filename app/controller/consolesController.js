@@ -7,6 +7,13 @@ class ConsoleController {
       response.send(consoles);
     });
   }
+
+  static getByUserId(request, response) {
+    Consoles.getByUserId(request.params.userId, (error, user) => {
+      if (error) { response.send(error); }
+      response.json(user);
+    });
+  }
 }
 
 module.exports = ConsoleController;

@@ -37,6 +37,9 @@ class Routes {
     apiRoutes.route('/games')
       .get(Games.listAll);
 
+    apiRoutes.route('/user/consoles/:userId')
+      .get(Consoles.getByUserId);
+
     apiRoutes.route('/consoles')
       .get(Consoles.listAll);
 

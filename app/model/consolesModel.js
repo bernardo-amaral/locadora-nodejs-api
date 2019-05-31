@@ -17,6 +17,21 @@ class Console {
       .then(response => result(null, response.rows))
       .catch(e => e.stack);
   }
+
+  static getByUserId(userId, result) {
+    const query = {
+      text: `SELECT c.*
+             FROM consoles AS c
+             LEFT JOIN games AS g ON (g.console_id=c.console_id)
+             LEFT JOIN users_games AS ug ON (g.game_id=ug.game_id)
+             WHERE ug.user_id=$1
+             ORDER BY c.name ASC`,
+      values: [userId],
+    };
+    sql.query(query)
+      .then(response => result(null, response.rows))
+      .catch(e => e.stack);
+  }
 }
 
 module.exports = Console;
