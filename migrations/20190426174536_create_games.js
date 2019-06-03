@@ -5,6 +5,7 @@ exports.up = function (knex) {
     table.increments('game_id').unsigned().primary();
     table.string('title').notNull();
     table.string('developer');
+    table.string('publisher');
     table.string('genre');
     table.integer('console_id').unsigned();
     table.string('release_year');

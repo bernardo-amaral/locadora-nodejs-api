@@ -30,8 +30,8 @@ class GameController {
   }
 
   static createAUserGame(request, response) {
-    const userId = request.body.userId;
-    const gameId = request.body.gameId;
+    const { userId } = request.body;
+    const { gameId } = request.body;
     if (!userId && !gameId) {
       response.status(400).send({ error: true, message: 'Please provide the required fields' });
     } else {
