@@ -2927,17 +2927,17 @@ async function populateWithNesGames(knex) {
       },
       {
         game_id: 293,
-        title: "Indiana Jones and the Last Crusade",
+        title: "Indiana Jones and the Last Crusade (Taito)",
         developer: "Software Creations",
         publisher: "Taito",
         release_year: "March 1991",
         genre: '',
         console_id: 2,
-        cover_picture: ''
+        cover_picture: 'https://upload.wikimedia.org/wikipedia/en/e/e0/Indiana_Jones_and_the_Last_Crusade_%281991%29_Coverart.png'
       },
       {
         game_id: 294,
-        title: "Indiana Jones and the Last Crusade",
+        title: "Indiana Jones and the Last Crusade (Ubisoft)",
         developer: "NMS Software",
         publisher: "Ubisoft",
         release_year: "December 1993",
@@ -4427,7 +4427,7 @@ async function populateWithNesGames(knex) {
       },
       {
         game_id: 443,
-        title: "Pac-Man",
+        title: "Pac-Man (Namco)",
         developer: "Namco",
         publisher: "Namco",
         release_year: "November 1993",
@@ -4437,7 +4437,7 @@ async function populateWithNesGames(knex) {
       },
       {
         game_id: 444,
-        title: "Pac-Man",
+        title: "Pac-Man (Tengen)",
         developer: "Namco",
         publisher: "Tengen",
         release_year: "October 1988",
