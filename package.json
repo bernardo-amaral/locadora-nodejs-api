@@ -5,12 +5,12 @@
   "main": "./app/server.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha ./test/*.test.js --reporter spec --exit",
-    "build": "npm run lint",
     "start": "node ./app/server.js",
     "lint": "./node_modules/.bin/eslint app/*js",
-    "migrate": "./node_modules/.bin/knex migrate:latest",
+    "migrate": "./node_modules/.bin/knex migrate:rollback && ./node_modules/.bin/knex migrate:latest",
     "seed": "./node_modules/.bin/knex seed:run",
-    "knex": "./node_modules/.bin/knex"
+    "knex": "./node_modules/.bin/knex",
+    "build": "npm run lint && npm run migrate && npm run seed"
   },
   "repository": {
     "type": "git",
