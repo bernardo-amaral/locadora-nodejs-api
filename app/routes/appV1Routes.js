@@ -35,10 +35,14 @@ class Routes {
       .get(Users.getById);
 
     apiRoutes.route('/games')
-      .get(Games.listAll);
+      .get(Games.listAll)
+      .post(Games.createAUserGame);
 
     apiRoutes.route('/user/consoles/:userId')
       .get(Consoles.getByUserId);
+
+    apiRoutes.route('/consoles/games/:consoleId')
+      .get(Games.getByConsoleId);
 
     apiRoutes.route('/consoles')
       .get(Consoles.listAll);
