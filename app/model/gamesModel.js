@@ -51,6 +51,18 @@ class Game {
       .catch(e => e.stack);
   }
 
+  static getByConsoleId(consoleId, result) {
+    const query = {
+      text: `SELECT * FROM games
+             WHERE console_id = $1
+             ORDER BY title`,
+      values: [consoleId],
+    };
+    sql.query(query)
+      .then(response => result(null, response.rows))
+      .catch(e => e.stack);
+  }
+
   static getByUserAndPlatform(userId, consoleId, result) {
     const query = {
       text: `SELECT g.game_id,
@@ -72,6 +84,19 @@ class Game {
     sql.query(query)
       .then(response => result(null, response.rows))
       .catch(e => e.stack);
+  }
+
+  static createUserGame(userId, gameId, result) {
+    const query = {
+      text: 'INSERT INTO users_games (user_id, game_id) VALUES ($1, $2) RETURNING user_game_id',
+      values: [userId, gameId],
+    };
+    sql.query(query)
+      .then(response => result(null, {
+        sucess: (response.rowCount > 0),
+        userGameId: response.rows[0].user_game_id,
+      }))
+      .catch(e => result(null, e.stack));
   }
 }
 
