@@ -1,7 +1,10 @@
 /* eslint-disable */
-exports.seed = function (knex) {
-  return knex('games').where('console_id', 2).del()
-    .then(() => knex('games').insert([
+const tableName = 'games';
+exports.seed = knex => populateWithNesGames(knex);
+
+async function populateWithNesGames(knex) {
+    await knex(tableName).where('console_id', 2).del();
+    await knex(tableName).insert([
       {
         game_id: 1,
         title: "10-Yard Fight",
@@ -144,7 +147,7 @@ exports.seed = function (knex) {
       },
       {
         game_id: 15,
-        title: "Adventure Island II (NA)\nThe Adventure Island Part II (EU/AUS)",
+        title: "Adventure Island II",
         developer: "Now Production",
         publisher: "Hudson Soft",
         release_year: "February 1991",
@@ -284,7 +287,7 @@ exports.seed = function (knex) {
       },
       {
         game_id: 29,
-        title: "Al Unser Jr.'s Turbo Racing (NA)\nTurbo Racing (EU)",
+        title: "Al Unser Jr.'s Turbo Racing",
         developer: "Data East",
         publisher: "Data East",
         release_year: "March 1990",
@@ -484,7 +487,7 @@ exports.seed = function (knex) {
       },
       {
         game_id: 49,
-        title: "Bad Dudes (NA)\nBad Dudes vs. DragonNinja (EU)",
+        title: "Bad Dudes",
         developer: "Data East",
         publisher: "Data East",
         release_year: "August 1989",
@@ -894,7 +897,7 @@ exports.seed = function (knex) {
       },
       {
         game_id: 90,
-        title: "Bomberman II (NA)\nDynablaster (EU)",
+        title: "Bomberman II",
         developer: "Hudson Soft",
         publisher: "Hudson Soft",
         release_year: "February 1993",
@@ -994,7 +997,7 @@ exports.seed = function (knex) {
       },
       {
         game_id: 100,
-        title: "The Bugs Bunny Birthday Blowout (NA)\nThe Bugs Bunny Blowout (EU)",
+        title: "The Bugs Bunny Birthday Blowout",
         developer: "Kemco",
         publisher: "Seika",
         release_year: "September 1990",
@@ -1414,7 +1417,7 @@ exports.seed = function (knex) {
       },
       {
         game_id: 142,
-        title: "Contra (NA)\nProbotector (EU)",
+        title: "Contra",
         developer: "Konami",
         publisher: "Konami",
         release_year: "February 1988",
@@ -1914,7 +1917,7 @@ exports.seed = function (knex) {
       },
       {
         game_id: 192,
-        title: "Dragon Power (NA)\nDragon Ball: Le Secret du Dragon (FRA)",
+        title: "Dragon Power",
         developer: "TOSE",
         publisher: "Bandai",
         release_year: "March 1988",
@@ -2184,7 +2187,7 @@ exports.seed = function (knex) {
       },
       {
         game_id: 219,
-        title: "Fire 'n Ice (NA)\nSolomon's Key 2 (EU)",
+        title: "Fire 'n Ice",
         developer: "Tecmo",
         publisher: "Tecmo",
         release_year: "March 1993",
@@ -2364,7 +2367,7 @@ exports.seed = function (knex) {
       },
       {
         game_id: 237,
-        title: "Galaga: Demons of Death (NA)\nGalaga (EU)",
+        title: "Galaga: Demons of Death",
         developer: "Namco",
         publisher: "Bandai",
         release_year: "September 1988",
@@ -2934,7 +2937,7 @@ exports.seed = function (knex) {
       },
       {
         game_id: 294,
-        title: "Indiana Jones and the Last Crusade (NA)\nIndy: Indiana Jones and the Last Crusade (EU)",
+        title: "Indiana Jones and the Last Crusade",
         developer: "NMS Software",
         publisher: "Ubisoft",
         release_year: "December 1993",
@@ -3114,7 +3117,7 @@ exports.seed = function (knex) {
       },
       {
         game_id: 312,
-        title: "Joe & Mac (NA)\nJoe & Mac: Caveman Ninja (EU)",
+        title: "Joe & Mac",
         developer: "Elite Systems",
         publisher: "Data East",
         release_year: "December 1992",
@@ -3324,7 +3327,7 @@ exports.seed = function (knex) {
       },
       {
         game_id: 333,
-        title: "Kiwi Kraze (NA)\nThe NewZealand Story (EU/AUS)",
+        title: "Kiwi Kraze",
         developer: "Software Creations",
         publisher: "Taito",
         release_year: "March 1991",
@@ -3554,7 +3557,7 @@ exports.seed = function (knex) {
       },
       {
         game_id: 356,
-        title: "Life Force (NA)\nLife Force Salamander (EU)",
+        title: "Life Force",
         developer: "Konami",
         publisher: "Konami",
         release_year: "August 1988",
@@ -3654,7 +3657,7 @@ exports.seed = function (knex) {
       },
       {
         game_id: 366,
-        title: "M.C. Kids (NA)\nMcDonaldland (EU)",
+        title: "M.C. Kids",
         developer: "Virgin Interactive",
         publisher: "Virgin Interactive",
         release_year: "February 1992",
@@ -4274,7 +4277,7 @@ exports.seed = function (knex) {
       },
       {
         game_id: 428,
-        title: "Ninja Gaiden (NA)\nShadow Warriors (EU)",
+        title: "Ninja Gaiden",
         developer: "Tecmo",
         publisher: "Tecmo",
         release_year: "March 1989",
@@ -4284,7 +4287,7 @@ exports.seed = function (knex) {
       },
       {
         game_id: 429,
-        title: "Ninja Gaiden II: The Dark Sword of Chaos (NA)\nShadow Warriors II: Ninja Gaiden (EU)",
+        title: "Ninja Gaiden II: The Dark Sword of Chaos",
         developer: "Tecmo",
         publisher: "Tecmo",
         release_year: "May 1990",
@@ -4774,7 +4777,7 @@ exports.seed = function (knex) {
       },
       {
         game_id: 478,
-        title: "Race America (NA)\nCorvette ZR-1 Challenge (EU)",
+        title: "Race America",
         developer: "Imagineering",
         publisher: "Absolute Entertainment",
         release_year: "May 1992",
@@ -4944,7 +4947,7 @@ exports.seed = function (knex) {
       },
       {
         game_id: 495,
-        title: "River City Ransom (NA)\nStreet Gangs (EU)",
+        title: "River City Ransom",
         developer: "Techn?s Japan",
         publisher: "Techn?s Japan",
         release_year: "January 1990",
@@ -5164,7 +5167,7 @@ exports.seed = function (knex) {
       },
       {
         game_id: 517,
-        title: "S.C.A.T.: Special Cybernetic Attack Team (NA)\nAction in New York (EU)",
+        title: "S.C.A.T.: Special Cybernetic Attack Team",
         developer: "Natsume",
         publisher: "Natsume",
         release_year: "June 1991",
@@ -5244,7 +5247,7 @@ exports.seed = function (knex) {
       },
       {
         game_id: 525,
-        title: "Shadow of the Ninja (NA)\nBlue Shadow (EU)",
+        title: "Shadow of the Ninja",
         developer: "Natsume",
         publisher: "Natsume",
         release_year: "December 1990",
@@ -5774,7 +5777,7 @@ exports.seed = function (knex) {
       },
       {
         game_id: 578,
-        title: "Super C (aka Super Contra) (NA)\nProbotector II: Return of The Evil Forces (EU)",
+        title: "Super C",
         developer: "Konami",
         publisher: "Konami",
         release_year: "April 1990",
@@ -6094,7 +6097,7 @@ exports.seed = function (knex) {
       },
       {
         game_id: 610,
-        title: "Teenage Mutant Ninja Turtles (NA)\nTeenage Mutant Hero Turtles (EU)",
+        title: "Teenage Mutant Ninja Turtles",
         developer: "Konami",
         publisher: "Ultra Games",
         release_year: "June 1989",
@@ -6104,7 +6107,7 @@ exports.seed = function (knex) {
       },
       {
         game_id: 611,
-        title: "Teenage Mutant Ninja Turtles II: The Arcade Game (NA)\nTeenage Mutant Hero Turtles II: The Arcade Game (EU)",
+        title: "Teenage Mutant Ninja Turtles II: The Arcade Game",
         developer: "Konami",
         publisher: "Ultra Games",
         release_year: "December 1990",
@@ -6124,7 +6127,7 @@ exports.seed = function (knex) {
       },
       {
         game_id: 613,
-        title: "Teenage Mutant Ninja Turtles: Tournament Fighters (NA)\nTeenage Mutant Hero Turtles: Tournament Fighters (EU)",
+        title: "Teenage Mutant Ninja Turtles: Tournament Fighters",
         developer: "Konami",
         publisher: "Konami",
         release_year: "February 1994",
@@ -6354,7 +6357,7 @@ exports.seed = function (knex) {
       },
       {
         game_id: 636,
-        title: "Top Players' Tennis (NA)\nFour Players' Tennis (EU)",
+        title: "Top Players' Tennis",
         developer: "Home Data",
         publisher: "Asmik",
         release_year: "January 1990",
@@ -6424,7 +6427,7 @@ exports.seed = function (knex) {
       },
       {
         game_id: 643,
-        title: "Track & Field (NA)\nTrack & Field in Barcelona (EU)",
+        title: "Track & Field",
         developer: "Konami",
         publisher: "Konami",
         release_year: "April 1987",
@@ -6884,7 +6887,7 @@ exports.seed = function (knex) {
       },
       {
         game_id: 689,
-        title: "Wizards & Warriors III: Kuros: Visions of Power (NA)\nWizards & Warriors III (EU)",
+        title: "Wizards & Warriors III: Kuros: Visions of Power",
         developer: "Rare, Zippo Games",
         publisher: "Acclaim Entertainment",
         release_year: "March 1992",
@@ -7044,7 +7047,7 @@ exports.seed = function (knex) {
       },
       {
         game_id: 705,
-        title: "Yoshi (NA)\nMario & Yoshi (EU)",
+        title: "Yoshi",
         developer: "Game Freak",
         publisher: "Nintendo",
         release_year: "June 1, 1992",
@@ -7121,6 +7124,6 @@ exports.seed = function (knex) {
         genre: '',
         console_id: 2,
         cover_picture: ''
-      }
-    ]));
+      }      
+    ]);
 };

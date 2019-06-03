@@ -7,8 +7,8 @@ exports.seed = function (knex) {
       { user_game_id: 2, user_id: 1, game_id: 714 },
       { user_game_id: 3, user_id: 1, game_id: 588 },
       { user_game_id: 4, user_id: 1, game_id: 711 },
-      { user_game_id: 4, user_id: 1, game_id: 349 },
-      { user_game_id: 4, user_id: 1, game_id: 426 },
-      { user_game_id: 4, user_id: 1, game_id: 709 },
+      { user_game_id: 5, user_id: 1, game_id: 349 },
+      { user_game_id: 6, user_id: 1, game_id: 426 },
+      { user_game_id: 7, user_id: 1, game_id: 709 },
     ]));
 };
