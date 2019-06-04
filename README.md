@@ -10,10 +10,10 @@ NodeJs 10+
 https://nodejs.org/
 ```
 
-Mysql Server 8+
+Docker CE
 
 ```
-https://www.mysql.com/
+https://hub.docker.com/search?offering=community&type=edition
 ```
 
 ## Instalação
@@ -21,17 +21,14 @@ https://www.mysql.com/
 - No diretório principal da aplicação execute o seguinte comando:
 
 ```
-npm install
+docker-compose up --build
 ```
 
-- Importe o mysql dump database.sql, localizado na raíz do projeto, para sua base de dados.
+- Após inicializar o container execute os seguintes comandos:
 
-- Ajuste o arquivo ./app/model/database.js com suas definições de conexão com o banco de dados.
-
-- Após tudo configurado, execute o comando abaixo para iniciar a aplicação:
-
-```
-npm start
+```node.js
+npm run migrate
+npm run seed
 ```
 
 ## Como utilizar
@@ -94,50 +91,9 @@ exemplo:
 DELETE http://localhost:3000/api/users/456?token=
 ````
 
-- **Listar filmes disponíveis:**
+- **Listar jogos disponíveis:**
 ```
-GET http://localhost:3000/api/movies?token=
-```
-
-- **Procurar por filmes disponíveis:**
-```
-GET http://localhost:3000/api/movies/search/:partialName?token=
-
-parâmetros:
-- partialName, onde este parâmetro é uma parte do nome do filme no qual você deseja buscar, ou até mesmo o nome completo.
-
-exemplo: 
-GET http://localhost:3000/api/movies/search/jurass?token=
-
-Exte exemplo retornará uma lista com todos os filmes que possuem este prefixo.
-```
-
-- **Alugar um filme:**
-```
-GET http://localhost:3000/api/movies/rent/:movieId/:userId?token=
-
-parâmetros:
-- movieId, refere-se ao id do filme no qual desejamos alugar;
-- userId, refere-se ao id do usuário que está realizando a locação do filme;
-
-exemplo:
-GET http://localhost:3000/api/movies/rent/4/123?token=
-
-No exemplo acima, o usuário de id 123 estará alugando o filme de id 4. O filme só permitirá locação caso exista unidades do mesmo no sistema.
-```
-
-- **Devolver um filme:**
-```
-GET http://localhost:3000/api/movies/return/:movieId/:userId?token=
-
-parâmetros:
-- movieId, refere-se ao id do filme no qual desejamos devolver;
-- userId, refere-se ao id do usuário que está realizando a devolução do filme;
-
-exemplo:
-GET http://localhost:3000/api/movies/return/4/123?token=
-
-No exemplo acima, o usuário de id 123 estará retornando o filme de id 4. O sistema só permitirá a devolução de um filme, caso o filme esteja em posse do usuário.
+GET http://localhost:3000/api/games?token=
 ```
 
 ## Autor
