@@ -23,8 +23,13 @@ https://hub.docker.com/search?offering=community&type=edition
 ```
 docker-compose up --build
 ```
+- Acesse o container com o comando:
 
-- Após inicializar o container execute os seguintes comandos:
+```bash
+docker-compose exec -ti nodeapi bash
+```
+
+- Dentro do container execute os seguintes comandos:
 
 ```node.js
 npm run migrate
