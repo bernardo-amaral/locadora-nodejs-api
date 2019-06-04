@@ -7,6 +7,7 @@ exports.up = function(knex) {
     table.integer('game_id').unsigned();
     table.foreign('user_id').onDelete('CASCADE').references('user_id').inTable('users');
     table.foreign('game_id').onDelete('CASCADE').references('game_id').inTable('games');
+    table.unique(['user_id', 'game_id']);
   });
 };
 

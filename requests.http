@@ -25,6 +25,16 @@ GET http://localhost:3000/api/v1/games HTTP/1.1
 
 ###
 
+POST http://localhost:3000/api/v1/games HTTP/1.1
+content-type: application/json
+
+{
+  "userId": 1,
+  "gameId": 123
+}
+
+###
+
 GET http://localhost:3000/api/v1/user/games/1 HTTP/1.1
 
 ###
