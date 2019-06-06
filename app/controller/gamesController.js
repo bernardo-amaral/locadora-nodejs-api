@@ -1,45 +1,44 @@
 const Game = require('../model/gamesModel');
 
 class GameController {
-  static listAll(request, response) {
-    Game.getAll((err, game) => {
-      if (err) { response.send(err); }
+  static async listAll(request, response) {
+    await Game.getAll((error, game) => {
+      if (error) { response.status(500).send(error.stack); }
       response.send(game);
     });
   }
 
-  static getByUserId(request, response) {
-    Game.getByUserId(request.params.userId, (error, user) => {
-      if (error) { response.send(error); }
+  static async getByUserId(request, response) {
+    await Game.getByUserId(request.params.userId, (error, user) => {
+      if (error) { response.status(500).send(error.stack); }
       response.json(user);
     });
   }
 
-  static getByConsoleId(request, response) {
-    Game.getByConsoleId(request.params.consoleId, (error, consoles) => {
-      if (error) { response.send(error); }
+  static async getByConsoleId(request, response) {
+    await Game.getByConsoleId(request.params.consoleId, (error, consoles) => {
+      if (error) { response.status(500).send(error.stack); }
       response.json(consoles);
     });
   }
 
-  static getByUserAndPlatform(request, response) {
-    Game.getByUserAndPlatform(request.params.userId, request.params.consoleId, (error, user) => {
-      if (error) { response.send(error); }
+  static async getByUserAndPlatform(request, response) {
+    const { userId, consoleId } = request.params;
+    await Game.getByUserAndPlatform(userId, consoleId, (error, user) => {
+      if (error) { response.status(500).send(error.stack); }
       response.json(user);
     });
   }
 
-  static createAUserGame(request, response) {
-    const { userId } = request.body;
-    const { gameId } = request.body;
+  static async createAUserGame(request, response) {
+    const { userId, gameId } = request.body;
     if (!userId && !gameId) {
       response.status(400).send({ error: true, message: 'Please provide the required fields' });
-    } else {
-      Game.createUserGame(userId, gameId, (error, dbResponse) => {
-        if (error) { response.send(error); }
-        response.json(dbResponse);
-      });
     }
+    await Game.createUserGame(userId, gameId, (error, dbResponse) => {
+      if (error) { response.status(500).send(error.stack); }
+      response.json(dbResponse);
+    });
   }
 }
 

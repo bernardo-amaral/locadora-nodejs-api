@@ -96,7 +96,7 @@ class Game {
         sucess: (response.rowCount > 0),
         userGameId: response.rows[0].user_game_id,
       }))
-      .catch(e => result(null, e.stack));
+      .catch(error => result(null, error));
   }
 }
 
