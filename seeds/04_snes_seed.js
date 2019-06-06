@@ -3,6 +3,7 @@ const tableName = 'games';
 exports.seed = knex => populateWithNesGames(knex);
 
 async function populateWithNesGames(knex) {
+    await knex.raw('SELECT setval(\'games_game_id_seq\', (SELECT MAX(game_id) from "games"));');
     await knex(tableName).where('console_id', 3).del();
     await knex(tableName).insert([
       {

@@ -11,7 +11,7 @@ exports.up = function (knex) {
     table.string('release_year');
     table.string('cover_picture');
     table.string('mode').defaultTo('Single-player');
-    table.unique('title');
+    table.unique(['title', 'console_id']);
     table.foreign('console_id').onDelete('CASCADE').references('console_id').inTable('consoles');
   });
 };
