@@ -10,7 +10,7 @@ class Game {
     this.coverPicture = game.coverPicture;
   }
 
-  static getAll(result) {
+  static async getAll(result) {
     const query = {
       text: `SELECT g.game_id,
                     g.title,
@@ -24,12 +24,12 @@ class Game {
              LEFT JOIN consoles AS c ON (c.console_id=g.console_id)
              ORDER BY g.title ASC`,
     };
-    sql.query(query)
+    await sql.query(query)
       .then(response => result(null, response.rows))
       .catch(e => e.stack);
   }
 
-  static getByUserId(userId, result) {
+  static async getByUserId(userId, result) {
     const query = {
       text: `SELECT g.game_id,
                     g.title,
@@ -46,24 +46,24 @@ class Game {
              ORDER BY g.title ASC`,
       values: [userId],
     };
-    sql.query(query)
+    await sql.query(query)
       .then(response => result(null, response.rows))
       .catch(e => e.stack);
   }
 
-  static getByConsoleId(consoleId, result) {
+  static async getByConsoleId(consoleId, result) {
     const query = {
       text: `SELECT * FROM games
              WHERE console_id = $1
              ORDER BY title`,
       values: [consoleId],
     };
-    sql.query(query)
+    await sql.query(query)
       .then(response => result(null, response.rows))
       .catch(e => e.stack);
   }
 
-  static getByUserAndPlatform(userId, consoleId, result) {
+  static async getByUserAndPlatform(userId, consoleId, result) {
     const query = {
       text: `SELECT g.game_id,
                     g.title,
@@ -81,22 +81,22 @@ class Game {
              ORDER BY g.title ASC`,
       values: [userId, consoleId],
     };
-    sql.query(query)
+    await sql.query(query)
       .then(response => result(null, response.rows))
       .catch(e => e.stack);
   }
 
-  static createUserGame(userId, gameId, result) {
+  static async createUserGame(userId, gameId, result) {
     const query = {
       text: 'INSERT INTO users_games (user_id, game_id) VALUES ($1, $2) RETURNING user_game_id',
       values: [userId, gameId],
     };
-    sql.query(query)
+    await sql.query(query)
       .then(response => result(null, {
         sucess: (response.rowCount > 0),
         userGameId: response.rows[0].user_game_id,
       }))
-      .catch(error => result(null, error));
+      .catch(error => result(error));
   }
 }
 
