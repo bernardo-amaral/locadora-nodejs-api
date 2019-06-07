@@ -28,6 +28,7 @@ class UserController {
         const token = jwt.sign({ name: loginUser.name, email: loginUser.email }, config.jwtSecret, { expiresIn: '24h' });
         TokenVerify.storageToken(token, userId, () => {
           response.status(200).json({
+            success: true,
             token,
             userName: userLogged.userName,
             userId: userLogged.userId,
