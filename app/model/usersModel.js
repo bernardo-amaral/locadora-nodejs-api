@@ -8,14 +8,18 @@ class User {
     this.password = user.password;
   }
 
-  static login(user, result) {
+  static async login(user, result) {
     const query = {
       text: 'SELECT user_id FROM users WHERE email = $1 AND password = $2',
       values: [user.email, user.password],
     };
-    sql.query(query)
-      .then(response => result(null, (response.rows.length > 0), response.rows[0].user_id))
-      .catch(e => result(e.stack));
+
+    await sql.query(query)
+      .then(response => result(null, {
+        userLogged: (response.rows.length > 0),
+        userId: response.rows[0].user_id,
+      }))
+      .catch(error => result(error));
   }
 
   static createUser(newUser, result) {

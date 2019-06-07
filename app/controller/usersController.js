@@ -12,17 +12,29 @@ class UserController {
     });
   }
 
-  static authUser(request, response) {
+  static async authUser(request, response) {
     const loginUser = new User(request.body);
     loginUser.password = crypto.createHash('md5').update(loginUser.password).digest('hex');
-    User.login(loginUser, (error, userLogged, userId) => {
+
+    await User.login(loginUser, (error, userLogged, userId) => {
+      if (error) {
+        response.status(500).json({
+          success: false,
+          error: error.detail,
+        });
+      }
+
       if (userLogged) {
         const token = jwt.sign({ name: loginUser.name, email: loginUser.email }, config.jwtSecret, { expiresIn: '24h' });
         TokenVerify.storageToken(token, userId, () => {
-          response.json({ user: loginUser.name, token });
+          response.status(200).json({
+            userId,
+            user: loginUser.name,
+            token,
+          });
         });
       } else {
-        response.status(400).send({ error: true, message: 'Access denied!' });
+        response.status(400).json({ error: true, message: 'Access denied!' });
       }
     });
   }

@@ -23,14 +23,16 @@ class Token {
       .catch(e => result(e.stack));
   }
 
-  static checkTokenStatus(token, result) {
-    sql.query('SELECT token FROM tokens WHERE active = ? AND token = ?', ['S', token], (error, rows) => {
-      if (error) {
-        result(error, null);
-      } else {
-        result(null, (rows.length > 0));
-      }
-    });
+  static async checkTokenStatus(token, result) {
+    const query = {
+      text: 'SELECT token FROM tokens WHERE active = $1 AND token = $2',
+      values: ['S', token],
+    };
+    await sql.query(query)
+      .then(response => result(null, {
+        sucess: (response.rowCount > 0),
+      }))
+      .catch(error => result(error));
   }
 }
 
