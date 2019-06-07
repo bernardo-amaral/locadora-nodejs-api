@@ -14,13 +14,13 @@ class UserController {
 
   static async authUser(request, response) {
     const loginUser = new User(request.body);
-    loginUser.password = crypto.createHash('md5').update(loginUser.password).digest('hex');
+    loginUser.password = User.encryptPassword(loginUser.password);
 
     await User.login(loginUser, (error, userLogged, userId) => {
       if (error) {
         response.status(500).json({
           success: false,
-          error: error.detail,
+          message: error,
         });
       }
 
@@ -28,13 +28,16 @@ class UserController {
         const token = jwt.sign({ name: loginUser.name, email: loginUser.email }, config.jwtSecret, { expiresIn: '24h' });
         TokenVerify.storageToken(token, userId, () => {
           response.status(200).json({
-            userId,
-            user: loginUser.name,
             token,
+            userName: userLogged.userName,
+            userId: userLogged.userId,
           });
         });
       } else {
-        response.status(400).json({ error: true, message: 'Access denied!' });
+        response.status(400).json({
+          error: true,
+          message: 'Access denied!',
+        });
       }
     });
   }

@@ -1,3 +1,4 @@
+const crypto = require('crypto');
 const sql = require('./database');
 
 class User {
@@ -8,18 +9,30 @@ class User {
     this.password = user.password;
   }
 
+  static encryptPassword(password) {
+    if (password) {
+      return crypto.createHash('md5').update(password).digest('hex');
+    }
+    return password;
+  }
+
   static async login(user, result) {
     const query = {
-      text: 'SELECT user_id FROM users WHERE email = $1 AND password = $2',
+      text: 'SELECT user_id, name FROM users WHERE email = $1 AND password = $2',
       values: [user.email, user.password],
     };
+
+    if (!user.email || !user.password) {
+      result('Informe os campos [email, password].');
+    }
 
     await sql.query(query)
       .then(response => result(null, {
         userLogged: (response.rows.length > 0),
         userId: response.rows[0].user_id,
+        userName: response.rows[0].name,
       }))
-      .catch(error => result(error));
+      .catch(error => result(error.stack));
   }
 
   static createUser(newUser, result) {
