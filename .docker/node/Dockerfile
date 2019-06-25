@@ -1,9 +1,5 @@
 FROM node:latest
 
-# ENV http_proxy="http://10.203.222.109:3128/"
-# ENV https_proxy="http://10.203.222.109:3128/"
-# ENV no_proxy=""
-
 ENV NODE_ENV=development
 
 ADD . /app
@@ -12,6 +8,8 @@ WORKDIR /app
 VOLUME ["/app"]
 
 RUN npm install
+
+RUN npm install -g nodemon
 
 EXPOSE 3000
 

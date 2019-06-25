@@ -4,6 +4,7 @@ const Default = require('../controller/defaultController');
 const Users = require('../controller/usersController');
 const Games = require('../controller/gamesController');
 const Consoles = require('../controller/consolesController');
+const Spiders = require('../controller/spiderController');
 
 const routes = express.Router();
 
@@ -43,6 +44,9 @@ class Routes {
 
     apiRoutes.route('/consoles/games/:consoleId')
       .get(Games.getByConsoleId);
+
+    apiRoutes.route('/products/:userId')
+      .get(Spiders.listAllByUserId);
 
     apiRoutes.route('/consoles')
       .get(Consoles.listAll);
