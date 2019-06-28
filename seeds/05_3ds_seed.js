@@ -1,8 +1,8 @@
 /* eslint-disable */
 const tableName = 'games';
-exports.seed = knex => populateWith3dsGames(knex);
+exports.seed = knex => populateWithNesGames(knex);
 
-async function populateWith3dsGames(knex) {
+async function populateWithNesGames(knex) {
     await knex.raw('SELECT setval(\'games_game_id_seq\', (SELECT MAX(game_id) from "games"));');
     await knex(tableName).where('console_id', 13).del();
     await knex(tableName).insert([
@@ -694,7 +694,10 @@ async function populateWith3dsGames(knex) {
             title: "Pokémon Mystery Dungeon: Magnagate and the Infinite Labyrinth",
             developer: "Chunsoft",
             publisher: "Nintendo",
-            "Japão": "23 de novembro de 2012"
+            release_year: "24 de Março de 2013",
+            genre: '',
+            console_id: 13,
+            cover_picture: ''
         },
         {
             title: "Pokémon Rumble Blast",
