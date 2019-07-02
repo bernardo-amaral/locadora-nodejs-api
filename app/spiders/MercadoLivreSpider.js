@@ -2,8 +2,9 @@ const cheerio = require('cheerio');
 const request = require('request');
 
 module.exports = class MercadoLivreSpider {
-
-  siteData = [];
+  constructor() {
+    this.siteData = [];
+  }
 
   fetchData(searchTerm) {
     this.siteData = [];
