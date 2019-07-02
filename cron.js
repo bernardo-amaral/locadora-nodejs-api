@@ -1,5 +1,8 @@
 const cron = require('node-cron');
 
-cron.schedule('0 */1 * * *', () => {
-  console.log('Executando a tarefa a cada 1 minuto');
-});
+const MercadoLivreSpider = require('./app/spiders/MercadoLivreSpider');
+
+// cron.schedule('*/1 * * * *', () => {
+  const mercadoLivreSpider = new MercadoLivreSpider();
+  console.log(mercadoLivreSpider.fetchData('crash-team-racer-switch'));
+// });
