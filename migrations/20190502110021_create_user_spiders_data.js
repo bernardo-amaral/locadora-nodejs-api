@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 exports.up = function (knex) {
-  return knex.schema.createTable('user_spider_data', (table) => {
+  return knex.schema.createTable('user_spiders_data', (table) => {
     table.increments('user_spider_data_id').unsigned().primary();
     table.integer('user_id').notNull();
     table.string('product_title').notNull();
@@ -13,5 +13,5 @@ exports.up = function (knex) {
 };
 
 exports.down = function (knex) {
-  return knex.schema.dropTable('user_spider_data');
+  return knex.schema.dropTable('user_spiders_data');
 };
