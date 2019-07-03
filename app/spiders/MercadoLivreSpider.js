@@ -8,7 +8,6 @@ module.exports = class MercadoLivreSpider {
   }
 
   async fetchData(searchTerm) {
-    this.siteData = [];
     await request({ uri: `https://lista.mercadolivre.com.br/${searchTerm}` }, (error, response, body) => {
       const root = cheerio.load(body);
 
