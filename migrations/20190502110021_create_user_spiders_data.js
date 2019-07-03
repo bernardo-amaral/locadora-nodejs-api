@@ -9,6 +9,7 @@ exports.up = function (knex) {
     table.string('product_price').notNull();
     table.string('product_frete');
     table.string('product_image');
+    table.foreign('user_id').onDelete('CASCADE').references('user_id').inTable('users');
   });
 };
 
