@@ -1,31 +1,34 @@
+/* eslint-disable class-methods-use-this */
+/* eslint-disable consistent-return */
 /* eslint-disable no-console */
+const axios = require('axios');
 const cheerio = require('cheerio');
-const request = require('request');
+
+const parsedResults = [];
 
 module.exports = class MercadoLivreSpider {
-  constructor() {
-    this.siteData = [];
-  }
+  async getWebsiteContent(searchTerm) {
+    try {
+      const response = await axios.get(`https://lista.mercadolivre.com.br/${searchTerm}`);
+      const root = cheerio.load(response.data);
 
-  async fetchData(searchTerm) {
-    await request({ uri: `https://lista.mercadolivre.com.br/${searchTerm}` }, (error, response, body) => {
-      const root = cheerio.load(body);
-
-      root('.results-item').each((i, elem) => {
+      root('.results-item').map((_i, elem) => {
         const a = root(elem).find('a');
         const price = root(elem).find('.price__container');
         const frete = root(elem).find('.item__shipping');
         const img = root(elem).find('img');
 
-        this.siteData.push({
+        parsedResults.push({
           title: a.text().trim(),
           url: a.attr('href'),
           price: price.text().replace('R$', ' ').trim().replace(' ', '.'),
           frete: frete.text().trim(),
-          picture: img.attr('src'),
+          picture: img.attr('data-src'),
         });
       });
-      return this.siteData;
-    });
+      return parsedResults;
+    } catch (error) {
+      console.error(error);
+    }
   }
-};
+}
