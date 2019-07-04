@@ -1,11 +1,19 @@
-/* eslint-disable no-console */
 const sql = require('./database');
-// const MercadoLivreSpider = require('../spiders/MercadoLivreSpider');
 
 class Spider {
   static getAllByUserId(userId, result) {
     const query = {
-      text: 'SELECT * FROM user_spiders_data WHERE user_id = $1 ORDER BY user_id ASC',
+      text: 'SELECT * FROM user_spiders_data WHERE user_id = $1 ORDER BY user_spider_data_id ASC',
+      values: [userId],
+    };
+    sql.query(query)
+      .then(response => result(null, response.rows))
+      .catch(e => result(e.stack));
+  }
+
+  static getAllTermsByUserId(userId, result) {
+    const query = {
+      text: 'SELECT * FROM user_spiders_terms WHERE user_id = $1 ORDER BY user_spider_term_id ASC',
       values: [userId],
     };
     sql.query(query)
