@@ -4,7 +4,13 @@ const sql = require('./database');
 
 class Spider {
   static getAllByUserId(userId, result) {
-    result(null, userId);
+    const query = {
+      text: 'SELECT * FROM user_spiders_data WHERE user_id = $1 ORDER BY user_id ASC',
+      values: [userId],
+    };
+    sql.query(query)
+      .then(response => result(null, response.rows))
+      .catch(e => result(e.stack));
   }
 
   static insertData(spiderData, result) {
@@ -29,7 +35,7 @@ class Spider {
           userId: response.rows[0].user_spider_data_id,
         });
       })
-      .catch(e => result(null, e.stack));
+      .catch(e => result(e.stack));
   }
 }
 

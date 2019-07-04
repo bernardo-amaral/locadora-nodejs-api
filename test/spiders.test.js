@@ -12,7 +12,7 @@ describe('Check the Spiders', () => {
       product_shipping: '10.00',
       product_image: 'http://www.google.com/image.jpg',
     };
-    SpiderModel.insertData(testData, (error, userId) => {
+    SpiderModel.insertData(testData, (error) => {
       if (error) {
         done(error);
       } else {
