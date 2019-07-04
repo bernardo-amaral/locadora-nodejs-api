@@ -1,6 +1,8 @@
 [![Build Status](https://travis-ci.org/bernardo-amaral/nodejs-api-jwt.svg?branch=master)](https://travis-ci.org/bernardo-amaral/nodejs-api-jwt)
 
-# NodeJs API Server
+![App Logo](https://github.com/bernardo-amaral/react-native-games/blob/master/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png) 
+
+# NodeJs API REST Server
 
 ### Pré-requisitos
 
