@@ -9,6 +9,7 @@ const mercadoLivreSpider = new MercadoLivreSpider();
 const userId = 1;
 
 spiderModel.getAllTermsByUserId(userId, (response) => {
+  console.log(response);
   // eslint-disable-next-line array-callback-return
   response.map((termItem) => {
     mercadoLivreSpider.getWebsiteContent(termItem.value).then((data) => {

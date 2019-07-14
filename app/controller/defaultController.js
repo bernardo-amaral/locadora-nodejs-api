@@ -1,6 +1,6 @@
 class DefaultController {
   static main(request, response) {
-    response.send('Welcome!');
+    response.json({ success: true, message: 'Welcome!' });
   }
 }
 

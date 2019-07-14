@@ -13,8 +13,8 @@ app.use(bodyParser.json());
 
 const Routes = require('./routes/appV1Routes');
 
-app.get('/', (req, res) => {
-  res.send('Welcome!');
+app.get('/', (request, response) => {
+  response.json({ success: true, message: 'Welcome!' });
 });
 
 app.use('/api', new Routes());
