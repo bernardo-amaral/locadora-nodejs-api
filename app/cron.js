@@ -8,6 +8,8 @@ const mercadoLivreSpider = new MercadoLivreSpider();
 
 const userId = 1;
 
+spiderModel.insertTherms([1, 'Bloodstained switch']);
+
 spiderModel.getAllTermsByUserId(userId, (response) => {
   console.log(response);
   // eslint-disable-next-line array-callback-return

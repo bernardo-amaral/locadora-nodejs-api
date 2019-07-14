@@ -21,6 +21,24 @@ class Spider {
       .catch(e => result(e.stack));
   }
 
+  static insertTherms(thermData, result) {
+    const query = {
+      text: 'INSERT INTO user_spiders_terms (user_id, value) VALUES ($1, $2) RETURNING user_spider_term_id',
+      values: [
+        thermData.user_id,
+        thermData.value,
+      ],
+    };
+    sql.query(query)
+      .then((response) => {
+        result(null, {
+          sucess: (response.rowCount > 0),
+          userId: response.rows[0].user_spider_term_id,
+        });
+      })
+      .catch(e => result(e.stack));
+  }
+
   static insertData(spiderData, result) {
     const query = {
       text: `INSERT INTO user_spiders_data
