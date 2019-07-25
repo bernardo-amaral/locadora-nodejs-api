@@ -21,22 +21,21 @@ class Spider {
       .catch(e => result(e.stack));
   }
 
-  static insertTherms(thermData, result) {
+  static insertTherms(thermData) {
+    console.log(thermData.userId);
     const query = {
       text: 'INSERT INTO user_spiders_terms (user_id, value) VALUES ($1, $2) RETURNING user_spider_term_id',
       values: [
-        thermData.user_id,
+        thermData.userId,
         thermData.value,
       ],
     };
     sql.query(query)
-      .then((response) => {
-        result(null, {
-          sucess: (response.rowCount > 0),
-          userId: response.rows[0].user_spider_term_id,
-        });
-      })
-      .catch(e => result(e.stack));
+      .then(response => ({
+        sucess: (response.rowCount > 0),
+        userId: response.rows[0].user_spider_term_id,
+      }))
+      .catch(error => error.stack);
   }
 
   static insertData(spiderData, result) {
@@ -46,7 +45,7 @@ class Spider {
               VALUES ($1, $2, $3, $4, $5, $6)
               RETURNING user_spider_data_id`,
       values: [
-        spiderData.user_id,
+        1,
         spiderData.product_title,
         spiderData.product_url,
         spiderData.product_price,
