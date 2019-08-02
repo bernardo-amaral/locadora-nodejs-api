@@ -8,8 +8,8 @@ const mercadoLivreSpider = new MercadoLivreSpider();
 
 const userId = 1;
 
-const responseTherm = spiderModel.insertTherms({userId: 1, value: 'Bloodstained switch'});
-console.log(responseTherm);
+//const responseTherm = spiderModel.insertTherms({ userId, value: 'Shantae switch' });
+// console.log(responseTherm);
 
 spiderModel.getAllTermsByUserId(userId, (response) => {
   console.log(response);

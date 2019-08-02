@@ -21,21 +21,28 @@ class Spider {
       .catch(e => result(e.stack));
   }
 
-  static insertTherms(thermData) {
-    console.log(thermData.userId);
+  static async insertTherms(thermData) {
     const query = {
-      text: 'INSERT INTO user_spiders_terms (user_id, value) VALUES ($1, $2) RETURNING user_spider_term_id',
+      text: 'INSERT INTO user_spiders_terms(user_id, value) VALUES($1, $2) RETURNING user_spider_term_id',
       values: [
         thermData.userId,
         thermData.value,
       ],
     };
-    sql.query(query)
-      .then(response => ({
-        sucess: (response.rowCount > 0),
-        userId: response.rows[0].user_spider_term_id,
-      }))
-      .catch(error => error.stack);
+
+    try {
+      const { rows } = await sql.query(query);
+      return rows;
+    } catch (e) {
+      return e.stack;
+    }
+
+    // sql.query(query)
+    //   .then(response => ({
+    //     sucess: (response.rowCount > 0),
+    //     userId: response.rows[0].user_spider_term_id,
+    //   }))
+    //   .catch(error => error.stack);
   }
 
   static insertData(spiderData, result) {
