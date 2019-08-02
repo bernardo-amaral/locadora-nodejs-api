@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "./app/server.js",
+  "engines": {
+    "node": "12.6.0",
+    "yarn": "^1.17.3"
+  },
   "scripts": {
     "test": "./node_modules/.bin/mocha ./test/*.test.js --reporter spec --exit",
     "start": "node ./app/server.js",
