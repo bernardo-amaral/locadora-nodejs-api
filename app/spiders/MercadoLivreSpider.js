@@ -12,7 +12,7 @@ module.exports = class MercadoLivreSpider {
       const response = await axios.get(`https://lista.mercadolivre.com.br/${searchTerm}`);
       const root = cheerio.load(response.data);
 
-      root('.results-item').map((_i, elem) => {
+      await root('.results-item').map((_i, elem) => {
         const a = root(elem).find('a');
         const price = root(elem).find('.price__container');
         const frete = root(elem).find('.item__shipping');
@@ -26,7 +26,7 @@ module.exports = class MercadoLivreSpider {
           picture: img.attr('data-src'),
         });
       });
-      return parsedResults;
+      return await parsedResults;
     } catch (error) {
       console.error(error);
     }

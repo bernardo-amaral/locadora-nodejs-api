@@ -11,14 +11,13 @@ class Spider {
       .catch(e => result(e.stack));
   }
 
-  static getAllTermsByUserId(userId, result) {
+  static async getAllTermsByUserId(userId) {
     const query = {
       text: 'SELECT * FROM user_spiders_terms WHERE user_id = $1 ORDER BY user_spider_term_id ASC',
       values: [userId],
     };
-    sql.query(query)
-      .then(response => result(null, response.rows))
-      .catch(e => result(e.stack));
+    const response = await sql.query(query);
+    return response.rows;
   }
 
   static async insertTherms(thermData) {
