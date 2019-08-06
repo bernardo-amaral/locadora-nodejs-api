@@ -7,7 +7,7 @@ ADD . /app
 WORKDIR /app
 VOLUME ["/app"]
 
-RUN npm install
+RUN yarn install
 
 RUN npm install -g nodemon
 
