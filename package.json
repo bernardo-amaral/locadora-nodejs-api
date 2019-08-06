@@ -4,7 +4,7 @@
   "description": "",
   "main": "./app/server.js",
   "engines": {
-    "yarn": "^1.17.3"
+    "yarn": "^1.3.2"
   },
   "scripts": {
     "test": "./node_modules/.bin/mocha ./test/*.test.js --reporter spec --exit",
