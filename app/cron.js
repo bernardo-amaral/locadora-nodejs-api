@@ -8,7 +8,7 @@ const mercadoLivreSpider = new MercadoLivreSpider();
 
 const userId = 1;
 
-//const responseTherm = spiderModel.insertTherms({ userId, value: 'Shantae switch' });
+// const responseTherm = spiderModel.insertTherms({ userId, value: 'Shantae switch' });
 // console.log(responseTherm);
 
 spiderModel.getAllTermsByUserId(userId, (response) => {

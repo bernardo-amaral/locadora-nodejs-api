@@ -4,7 +4,6 @@
   "description": "",
   "main": "./app/server.js",
   "engines": {
-    "node": "12.6.0",
     "yarn": "^1.17.3"
   },
   "scripts": {
