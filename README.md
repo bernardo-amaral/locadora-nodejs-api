@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/bernardo-amaral/nodejs-api-jwt.svg?branch=master)](https://travis-ci.org/bernardo-amaral/nodejs-api-jwt)
+[![Maintainability](https://api.codeclimate.com/v1/badges/c34d71f32ee899e7b3b0/maintainability)](https://codeclimate.com/github/bernardo-amaral/nodejs-api-jwt/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/c34d71f32ee899e7b3b0/test_coverage)](https://codeclimate.com/github/bernardo-amaral/nodejs-api-jwt/test_coverage)
 
 ![App Logo](https://github.com/bernardo-amaral/react-native-games/blob/master/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png) 
 
