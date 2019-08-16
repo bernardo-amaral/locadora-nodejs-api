@@ -20,6 +20,15 @@ class Spider {
     return response.rows;
   }
 
+  static async deleteAllDataByUserId(userId) {
+    const query = {
+      text: 'DELETE FROM user_spiders_data WHERE user_id = $1',
+      values: [userId],
+    };
+    const response = await sql.query(query);
+    return response.rows;
+  }
+
   static async insertTherms(thermData) {
     const query = {
       text: 'INSERT INTO user_spiders_terms(user_id, value) VALUES($1, $2) RETURNING user_spider_term_id',
