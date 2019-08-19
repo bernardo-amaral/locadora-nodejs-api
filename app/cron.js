@@ -13,12 +13,14 @@ spiderModel.getAllTermsByUserId(userId).then((userTherms) => {
       mercadoLivreSpider.getWebsiteContent(termItem.value).then((data) => {
         data.map((spiderItem) => {
           const termData = {
-            user_id: 1,
+            user_id: userId,
             product_title: spiderItem.title,
             product_url: spiderItem.url,
             product_price: spiderItem.price,
             product_shipping: spiderItem.frete,
             product_image: spiderItem.picture,
+            search_therm: termItem.value,
+            product_provider: 'mercadolivre'
           };
           spiderModel.insertData(termData, (result) => {
             console.log(`New registry created - ${termData.product_title}`);

@@ -56,8 +56,8 @@ class Spider {
   static insertData(spiderData, result) {
     const query = {
       text: `INSERT INTO user_spiders_data
-              (user_id, product_title, product_url, product_price, product_shipping, product_image)
-              VALUES ($1, $2, $3, $4, $5, $6)
+              (user_id, product_title, product_url, product_price, product_shipping, product_image, therm, provider)
+              VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
               RETURNING user_spider_data_id`,
       values: [
         1,
@@ -66,6 +66,8 @@ class Spider {
         spiderData.product_price,
         spiderData.product_shipping,
         spiderData.product_image,
+        spiderData.search_therm,
+        spiderData.product_provider,
       ],
     };
     sql.query(query)

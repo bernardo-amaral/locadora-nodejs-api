@@ -10,6 +10,7 @@ exports.up = function (knex) {
     table.string('product_shipping');
     table.string('product_image');
     table.string('provider');
+    table.string('therm');
     table.foreign('user_id').onDelete('CASCADE').references('user_id').inTable('users');
   });
 };
