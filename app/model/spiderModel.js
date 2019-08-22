@@ -3,7 +3,7 @@ const sql = require('./database');
 class Spider {
   static getAllByUserId(userId, result) {
     const query = {
-      text: 'SELECT * FROM user_spiders_data WHERE user_id = $1 ORDER BY user_spider_data_id ASC',
+      text: 'SELECT * FROM user_spiders_data WHERE user_id = $1 ORDER BY product_price ASC',
       values: [userId],
     };
     sql.query(query)

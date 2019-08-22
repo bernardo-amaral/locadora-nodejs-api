@@ -7,6 +7,12 @@ class SpiderController {
       response.json(spiderData);
     });
   }
+
+  static async listAllThermsByUserId(request, response) {
+    await Spider.getAllTermsByUserId(request.params.userId).then((userTherms) => {
+      response.json(userTherms);
+    });
+  }
 }
 
 module.exports = SpiderController;
