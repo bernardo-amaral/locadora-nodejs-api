@@ -23,6 +23,16 @@ class SpiderController {
       response.json(userTherms);
     });
   }
+
+  static async deleteThermByUserId(request, response) {
+    const thermData = {
+      userId: request.params.userId,
+      thermId: request.body.thermId,
+    };
+    await Spider.deleteTherms(thermData).then((userTherms) => {
+      response.json(userTherms);
+    });
+  }
 }
 
 module.exports = SpiderController;

@@ -50,7 +50,9 @@ class Routes {
 
     apiRoutes.route('/therms/:userId')
       .put(Spiders.addThermsByUserId)
-      .get(Spiders.listAllThermsByUserId);
+      .post(Spiders.addThermsByUserId)
+      .get(Spiders.listAllThermsByUserId)
+      .delete(Spiders.deleteThermByUserId);
 
     apiRoutes.route('/consoles')
       .get(Consoles.listAll);

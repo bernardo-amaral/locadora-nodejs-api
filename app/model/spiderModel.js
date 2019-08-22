@@ -53,6 +53,23 @@ class Spider {
     //   .catch(error => error.stack);
   }
 
+  static async deleteTherms(thermData) {
+    const query = {
+      text: 'DELETE FROM user_spiders_terms WHERE user_id=$1 AND user_spider_term_id=$2',
+      values: [
+        thermData.userId,
+        thermData.thermId,
+      ],
+    };
+
+    try {
+      const { rows } = await sql.query(query);
+      return (rows > 0);
+    } catch (e) {
+      return e.stack;
+    }
+  }
+
   static insertData(spiderData, result) {
     const query = {
       text: `INSERT INTO user_spiders_data
