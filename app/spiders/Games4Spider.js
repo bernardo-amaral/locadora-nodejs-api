@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable consistent-return */
 /* eslint-disable no-console */
@@ -9,6 +10,7 @@ const parsedResults = [];
 module.exports = class Games4Spider {
   async getWebsiteContent(searchTerm) {
     try {
+      searchTerm = searchTerm.replace('-', '+');
       const response = await axios.get(`https://www.games4.com.br/pesquisa?t=${searchTerm}`);
       const root = cheerio.load(response.data);
 
