@@ -15,10 +15,10 @@ class SpiderController {
   }
 
   static async addThermsByUserId(request, response) {
-    const thermData = [
-      request.params.userId,
-      request.body.therm,
-    ];
+    const thermData = {
+      userId: request.params.userId,
+      value: request.body.therm,
+    };
     await Spider.insertTherms(thermData).then((userTherms) => {
       response.json(userTherms);
     });
