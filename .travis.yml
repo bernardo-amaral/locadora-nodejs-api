@@ -1,48 +1,38 @@
 language: node_js
 sudo: required
-
 services:
-  - docker
-
+- docker
 cache:
   directories:
-    - node_modules
-
+  - node_modules
 notifications:
   email:
     recipients:
-      - bernardo.amaral85@gmail.com
+    - bernardo.amaral85@gmail.com
     on_failure: always
-
 env:
   DOCKER_COMPOSE_VERSION: 1.23.2
   NODE_ENV: development
-
-node_js:
-    '10.15.1'
-
+node_js: 10.15.1
 before_install:
-  - npm install -g node-gyp
+- npm install -g node-gyp
 before_script:
-  - npm install
-  - npm install -g standard
-  - docker-compose build
-  - docker-compose up -d
-  - sleep 3
+- npm install
+- npm install -g standard
+- docker-compose build
+- docker-compose up -d
+- sleep 3
 script:
-  - docker exec -it nodeapi bash -c "npm run migrate"
-  - docker exec -it nodeapi bash -c "npm run seed"
-  - docker exec -it nodeapi bash -c "npm test"
+- docker exec -it nodeapi bash -c "npm run migrate"
+- docker exec -it nodeapi bash -c "npm run seed"
+- docker exec -it nodeapi bash -c "npm test"
 after_script:
-  - docker-compose kill
-
-before_deploy: "echo 'Deploying to Heroku...'"
-
+- docker-compose kill
+before_deploy: echo 'Deploying to Heroku...'
 deploy:
   provider: heroku
   api_key:
-    secure: e3fc1ce6-2525-4ebc-8b24-ff33488a1067
+    secure: e1Y4j80yoqIZ2EHVcDFnvcRnGmmYyrrYUcFrbWFaTFibg7t+7EqtUSQAyIKorqJf05OwnP3nighfdIfiaSxDo3ZkmdKpmnwM9WGmz914idGWqaDqfuIaMztky3+KK97ePatkgjItYLQ76SvWvfjdM8cd6LKXGsnuzbZrV6nf4eA4OHcLLOobFc/R+Or/qjXO/BaxedvAjl/dOI8Mm2t0+a87hX8eLvD8lfEfV4M+7cjiufYrPArKMFpc8lqoHGkefOgg2lMHy1G+rInx+y4fgSW0NGJlsLeF8wWAWQLDF9ZUjvOHBy0LgVYyqfhyghmMsb9uVZc35GrpY+TKBK/GIHrrwXsQLtk3UAt4Sly8WtMgqC11gc745QZdJDWJX1Ly+oa50gFLRrGCbxhT+yaRg/r08e3r2KaIMVHBLQ8ltJTNQzIbjUpXg84EwP5GKY7b8z+kCbmy2wEEH/JeKn+QYYMFraSqjiiWxvscs8SGpmBU7j+jqO9JqwVPGkRSudmPWvIREByVvvVJHIfX3Pv5bjp1h6LQYQ+PXZNxeemRFk1H1jKp2GTx+Mnf5CR6SyPrMvkVL09wPuZuDA1tMMEdb/y407swR2wm9Ma/l0GkjUF9hy2apzYYy9CfycKduWqS2nP/z2THPV3FOFEFgMjaIJK4JkfNUqindHp529UB8bU=
   app: games-node-api
   skip_cleanup: false
-
-after_deploy: "echo 'Heroku done!'"
+after_deploy: echo 'Heroku done!'

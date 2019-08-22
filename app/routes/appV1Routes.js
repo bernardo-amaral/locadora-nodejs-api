@@ -49,6 +49,7 @@ class Routes {
       .get(Spiders.listAllByUserId);
 
     apiRoutes.route('/therms/:userId')
+      .put(Spiders.addThermsByUserId)
       .get(Spiders.listAllThermsByUserId);
 
     apiRoutes.route('/consoles')

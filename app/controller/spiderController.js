@@ -13,6 +13,16 @@ class SpiderController {
       response.json(userTherms);
     });
   }
+
+  static async addThermsByUserId(request, response) {
+    const thermData = [
+      request.params.userId,
+      request.body.therm,
+    ];
+    await Spider.insertTherms(thermData).then((userTherms) => {
+      response.json(userTherms);
+    });
+  }
 }
 
 module.exports = SpiderController;
