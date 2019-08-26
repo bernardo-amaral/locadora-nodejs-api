@@ -18,7 +18,7 @@ module.exports = class MercadoLivreSpider {
 
       await root('.results-item').map((_i, elem) => {
         const a = root(elem).find('a');
-        const price = a.find('.item-price');
+        const price = a.find('span.item-price');
         const frete = a.find('.free-shipping');
         const img = root(elem).find('img');
 
