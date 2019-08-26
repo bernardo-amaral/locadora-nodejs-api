@@ -11,17 +11,18 @@ module.exports = class Games4Spider {
   async getWebsiteContent(searchTerm) {
     try {
       searchTerm = searchTerm.replace('-', '+');
-      const response = await axios.get(`https://www.games4.com.br/pesquisa?t=${searchTerm}`);
+      const response = await axios.get(`https://www.games4.com.br/sugestao.partial?t=${searchTerm}&showCorrections=true&showTerms=true&showProducts=true&termsLimit=0&productsLimit=0`);
       const root = cheerio.load(response.data);
 
-      await root('.wd-browsing-grid-list').map((_i, elem) => {
-        const a = root(elem).find('li');
-        const price = root(elem).find('.sale-price').find('span');
-        const img = root(elem).find('img').find('.nextImg');
+      await root('.suggestion-products').map((_i, elem) => {
+        const li = root(elem).find('li.suggestion-product');
+        const title = li.find('.suggestion-product-name');
+        const price = li.find('.suggestion-product-price');
+        const img = li.find('img');
 
         parsedResults.push({
-          title: a.text().trim(),
-          url: a.attr('href'),
+          title: title.text().trim(),
+          url: li.attr('data-url'),
           price: price.text().replace('R$', ' ').trim().replace(' ', '.'),
           frete: '0.00',
           picture: img.attr('src'),
