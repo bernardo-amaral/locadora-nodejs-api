@@ -10,7 +10,7 @@ const parsedResults = [];
 module.exports = class Games4Spider {
   async getWebsiteContent(searchTerm) {
     try {
-      searchTerm = searchTerm.replace('-', '+');
+      searchTerm = searchTerm.toLowerCase().replace(new RegExp('-', 'g'), '+');
       const response = await axios.get(`https://www.games4.com.br/sugestao.partial?t=${searchTerm}&showCorrections=true&showTerms=true&showProducts=true&termsLimit=0&productsLimit=0`);
       const root = cheerio.load(response.data);
 
