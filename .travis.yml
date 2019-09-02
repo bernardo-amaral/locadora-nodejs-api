@@ -2,6 +2,10 @@ language: node_js
 sudo: required
 services:
 - docker
+addons:
+  code_climate:
+    repo_token:
+      secure: Ev1NOTJ4EasKjx6YxZX0XxdzRYEpXB65vwGwe4/kZ/oYifMDF1Ap8o6cwdlApvwwYYAv5wx6unyRjLYoBC/5R/Ad/DJNa+zlLNKNjCeQYMYneTcyxMg43YzbQl/1S0/NnSGwu6QObqG+mrdXtdVu2Ut0PIjt7rHCZO51No8DZPjuixGQDpTN5rSi0C7B+iNmsop15QpCCM760f/Nuy1zF5n+PvFTJsjqJpR6XzT7mbYeyecVcFfSVREYJJqrAfHCDl66m/1SNcf0Zj4av05+xUqGje4b1Rpu3gu/QyaDx6Z6+DwK1Ak0E85dadHuAaf8MUP7cMrPlAisrY53Cvlbi35LJvp/kvNObPXSqezC6AF5xOXhdEiArDeHekQv+/OpnpOOQjbJQ8dTVehz4p8ppKv2tm5pN+2A1W7EypH3QXSMDhU21ZMkKn52v6sr9olV8zL8CjTmDpHNvt4OH+CJ3caN5EJp9GyoDRK7/GDYquRB2IiNd5Oj0zp+nP7GfXYDDgqYFabkVQtxA0AsVB+UFAoRNsrGL+vNvqNTPx9z2ZXhWLfpYv8lWyuhuXxRRaAb3ZFy4B5EPc8b3XedYDV+Wp9YWSVOLsp8GTTLsk9ckkPGFvg5DsJcXE7UverVfJ4CB+yPsw635dxrG1VqJ8xVkXgE0K32frw/f6ake8qRYvw=
 cache:
   directories:
   - node_modules
@@ -13,6 +17,8 @@ notifications:
 env:
   DOCKER_COMPOSE_VERSION: 1.23.2
   NODE_ENV: development
+  global:
+    secure: qBKG7vu96XW5e9yWTsy29wkEjjDKXK8etjrGCdQS7qiV8m9KinkmHd5kIjrMMrLCjAyyIiOV9oMuHgD6Rik7thIDIoHDrg8K+y98X0QFzAJGdnuek6Zex15kIf9tDzOuhbd71h1tYJ1eBTHb/x4OV+absHXxhe0dYpgfj1/pbP8wLjabBEtHa667jY+PQ1hvfn+Vg0zxQhJXwJLv38RDqhatqGkvHcWyNRecXGrf72aXZ1mDN1tLEQ05+66rDaDDNtTOQPyqfHKTMeItxp6Mh47gtJ7PQxCYjSgmeIFq7OCaDAGuf3aJ3GOwX8Ru+AUlpYYr06INhghCF5w2gAR6Hb8VW4DOZdfN8YYy6Prxk8hUr5UoNvFLUy2AzAPI1c787EHXeOn+iWlmP+Npw8VsH0mOLbWYt/3DU6361udY7Qj9PYh55Vq0W9jwEkAq3w+f2zxLI0y41TFmLS552if6wl1prVqU77ZXKKvNKEZkrheDeHqw9CK//zM+YbvpAxtfXs4LKxcQRuBRSnzT3XKjZXqOmCEoH58BjvdcvhxqH/0IvikrGcQBpUU90WY8ZBQNDWItrLLPfnVQM1+dhCd+lEhq4Eh7jFf85xG7OAcKlAeSjWLNy1NDT/JdQJ79EsJC0t+sFzJtki55gexBvWmRkCHThcduB6hMT5fARAhunBw=
 node_js: 10.15.1
 before_install:
 - npm install -g node-gyp
