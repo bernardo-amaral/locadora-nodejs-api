@@ -26,6 +26,7 @@ script:
 - docker exec -it nodeapi bash -c "npm run migrate"
 - docker exec -it nodeapi bash -c "npm run seed"
 - docker exec -it nodeapi bash -c "npm test"
+- docker exec -it nodeapi bash -c "npm run coverage"
 after_script:
 - docker-compose kill
 before_deploy: echo 'Deploying to Heroku...'
