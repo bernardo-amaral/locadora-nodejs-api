@@ -12,8 +12,7 @@ module.exports = class MercadoLivreSpider {
       const options = {
         headers: { 'viewport-width': '1366' },
       };
-
-      const response = await axios.get(`https://lista.mercadolivre.com.br/${searchTerm}`, options);
+      const response = await axios.get(`https://lista.mercadolivre.com.br/${searchTerm.toLowerCase()}`, options);
       const root = cheerio.load(response.data);
 
       await root('.results-item').map((_i, elem) => {
@@ -25,7 +24,7 @@ module.exports = class MercadoLivreSpider {
         parsedResults.push({
           title: a.find('.main-title').text().trim(),
           url: a.attr('href'),
-          price: price.text().replace('R$', ' ').trim().replace(' ', '.'),
+          price: (price.text()) ? price.text().replace('R$', ' ').trim().replace(' ', '.') : '???',
           frete: frete.text().trim(),
           picture: img.attr('data-src'),
         });
