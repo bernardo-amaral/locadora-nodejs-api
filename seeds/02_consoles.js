@@ -17,6 +17,7 @@ exports.seed = function (knex) {
       { console_id: 12, name: 'Nintendo DS', brand: 'Nintendo', release_year: '1994' },
       { console_id: 13, name: 'Nintendo 3DS', brand: 'Nintendo', release_year: '1994' },
       { console_id: 14, name: 'Nintendo Switch', brand: 'Nintendo', release_year: '1994' },
-      { console_id: 15, name: 'Master System', brand: 'Sega', release_year: '1994' }
+      { console_id: 15, name: 'Master System', brand: 'Sega', release_year: '1994' },
+      { console_id: 16, name: 'Nintendo Amiibo', brand: 'Nintendo', release_year: '2014' }
     ]));
 };
