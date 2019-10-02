@@ -30,6 +30,17 @@ class GameController {
     });
   }
 
+  static async removeAUserGame(request, response) {
+    const { userId, gameId } = request.body;
+    if (!userId && !gameId) {
+      response.status(400).json({ error: true, message: 'Please provide the required fields "userId" and "gameId"' });
+    }
+    await Game.removeUserGame(userId, gameId, (error, dbResponse) => {
+      if (error) { response.status(500).json({ success: false, error: error.detail }); }
+      response.json(dbResponse);
+    });
+  }
+
   static async createAUserGame(request, response) {
     const { userId, gameId } = request.body;
     if (!userId && !gameId) {

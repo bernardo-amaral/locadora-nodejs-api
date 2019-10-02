@@ -25,8 +25,8 @@ class Game {
              ORDER BY g.title ASC`,
     };
     await sql.query(query)
-      .then(response => result(null, response.rows))
-      .catch(e => e.stack);
+      .then((response) => result(null, response.rows))
+      .catch((e) => e.stack);
   }
 
   static async getByUserId(userId, result) {
@@ -47,8 +47,8 @@ class Game {
       values: [userId],
     };
     await sql.query(query)
-      .then(response => result(null, response.rows))
-      .catch(e => e.stack);
+      .then((response) => result(null, response.rows))
+      .catch((e) => e.stack);
   }
 
   static async getByConsoleId(consoleId, result) {
@@ -59,8 +59,8 @@ class Game {
       values: [consoleId],
     };
     await sql.query(query)
-      .then(response => result(null, response.rows))
-      .catch(e => e.stack);
+      .then((response) => result(null, response.rows))
+      .catch((e) => e.stack);
   }
 
   static async getByUserAndPlatform(userId, consoleId, result) {
@@ -82,8 +82,8 @@ class Game {
       values: [userId, consoleId],
     };
     await sql.query(query)
-      .then(response => result(null, response.rows))
-      .catch(e => e.stack);
+      .then((response) => result(null, response.rows))
+      .catch((e) => e.stack);
   }
 
   static async createUserGame(userId, gameId, result) {
@@ -92,11 +92,24 @@ class Game {
       values: [userId, gameId],
     };
     await sql.query(query)
-      .then(response => result(null, {
+      .then((response) => result(null, {
         sucess: (response.rowCount > 0),
         userGameId: response.rows[0].user_game_id,
       }))
-      .catch(error => result(error));
+      .catch((error) => result(error));
+  }
+
+  static async RemoveUserGame(userId, gameId, result) {
+    const query = {
+      text: 'DELETE FROM users_games WHERE user_id = $1 AND game_id = $2',
+      values: [userId, gameId],
+    };
+    await sql.query(query)
+      .then((response) => result(null, {
+        sucess: (response.rowCount > 0),
+        userGameId: response.rows[0].user_game_id,
+      }))
+      .catch((error) => result(error));
   }
 }
 
