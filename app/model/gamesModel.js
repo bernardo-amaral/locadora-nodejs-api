@@ -99,7 +99,7 @@ class Game {
       .catch((error) => result(error));
   }
 
-  static async RemoveUserGame(userId, gameId, result) {
+  static async removeUserGame(userId, gameId, result) {
     const query = {
       text: 'DELETE FROM users_games WHERE user_id = $1 AND game_id = $2',
       values: [userId, gameId],
