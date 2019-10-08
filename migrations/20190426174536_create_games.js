@@ -9,6 +9,7 @@ exports.up = function (knex) {
     table.string('genre');
     table.integer('console_id').unsigned();
     table.string('release_year');
+    table.string('amiibo_series');
     table.string('cover_picture');
     table.string('mode').defaultTo('Single-player');
     table.unique(['title', 'console_id']);
