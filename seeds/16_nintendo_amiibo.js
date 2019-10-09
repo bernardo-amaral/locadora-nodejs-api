@@ -556,7 +556,7 @@ async function populateWithNesGames(knex) {
       cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/animal-crossing-cards-series-1-amiibo-animal-crossing-series/figure.png'
     },
     {
-      title: "Tom Nook - Animal Crossing series",
+      title: "Tom Nook - Animal Crossing series (Card)",
       developer: "Nintendo",
       publisher: "Nintendo",
       amiibo_series: "Animal Crossing series",
@@ -566,7 +566,7 @@ async function populateWithNesGames(knex) {
       cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/tom-nook-amiibo-card-series-1-animal-crossing-series/screenshot-gallery/amiibo_TomNook_Card_AC_char.png'
     },
     {
-      title: "Isabelle - Animal Crossing series",
+      title: "Isabelle - Animal Crossing series (Card)",
       developer: "Nintendo",
       publisher: "Nintendo",
       amiibo_series: "Animal Crossing series",
@@ -576,7 +576,7 @@ async function populateWithNesGames(knex) {
       cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/isabelle-amiibo-card-series-1-animal-crossing-series/screenshot-gallery/amiibo_Isabelle_Card_AC_char.png'
     },
     {
-      title: "Digby - Animal Crossing series",
+      title: "Digby - Animal Crossing series (Card)",
       developer: "Nintendo",
       publisher: "Nintendo",
       amiibo_series: "Animal Crossing series",
@@ -586,7 +586,7 @@ async function populateWithNesGames(knex) {
       cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/digby-amiibo-card-series-1-animal-crossing-series/screenshot-gallery/amiibo_Digby_Card_AC_char.png'
     },
     {
-      title: "Lottie - Animal Crossing series",
+      title: "Lottie - Animal Crossing series (Card)",
       developer: "Nintendo",
       publisher: "Nintendo",
       amiibo_series: "Animal Crossing series",
@@ -596,7 +596,7 @@ async function populateWithNesGames(knex) {
       cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/lottie-amiibo-card-seies-1-animal-crossing-series/screenshot-gallery/amiibo_Lottie_Card_AC_char.png'
     },
     {
-      title: "Rosetti - Animal Crossing series",
+      title: "Rosetti - Animal Crossing series (Card)",
       developer: "Nintendo",
       publisher: "Nintendo",
       amiibo_series: "Animal Crossing series",
@@ -826,7 +826,7 @@ async function populateWithNesGames(knex) {
       cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/shovel-knight-amiibo-shovel-knight-series/screenshot-gallery/amiibo_ShovelKnight_ShovelKnight_char.png'
     },
     {
-      title: "Reese - Animal Crossing series",
+      title: "Reese - Animal Crossing series (Card)",
       developer: "Nintendo",
       publisher: "Nintendo",
       amiibo_series: "Animal Crossing series",
@@ -836,7 +836,7 @@ async function populateWithNesGames(knex) {
       cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/reese-amiibo-card-series-2-animal-crossing-series/screenshot-gallery/amiibo_Reese_Card_S2_AC.png'
     },
     {
-      title: "Kicks - Animal Crossing series",
+      title: "Kicks - Animal Crossing series (Card)",
       developer: "Nintendo",
       publisher: "Nintendo",
       amiibo_series: "Animal Crossing series",
@@ -846,7 +846,7 @@ async function populateWithNesGames(knex) {
       cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/kicks-amiibo-card-series-2-animal-crossing-series/screenshot-gallery/amiibo_Kicks_Card_S2_AC.png'
     },
     {
-      title: "Isabelle - Animal Crossing series",
+      title: "Isabelle - Animal Crossing series (Card)",
       developer: "Nintendo",
       publisher: "Nintendo",
       amiibo_series: "Animal Crossing series",
