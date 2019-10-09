@@ -881,5 +881,8 @@ async function populateWithNesGames(knex) {
       console_id: 16,
       cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/isabelle-amiibo-card-series-2-animal-crossing-series/screenshot-gallery/amiibo_Isabelle_Card_S2_AC.png'
     },
-  ]);
+  ]).returning('*')
+    .bind(console)
+    .then(console.log)
+    .catch(console.error);
 };
