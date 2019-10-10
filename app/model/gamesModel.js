@@ -18,6 +18,7 @@ class Game {
                     g.genre,
                     g.release_year,
                     g.cover_picture,
+                    g.amiibo_series,
                     g.mode,
                     c.name AS console
              FROM games AS g
@@ -37,6 +38,7 @@ class Game {
                     g.genre,
                     g.release_year,
                     g.cover_picture,
+                    g.amiibo_series,
                     g.mode,
                     c.name AS console
              FROM games AS g
@@ -72,6 +74,7 @@ class Game {
                     g.release_year,
                     g.cover_picture,
                     g.mode,
+                    g.amiibo_series,
                     c.name AS console
              FROM games AS g
              LEFT JOIN users_games AS ug ON (ug.game_id=g.game_id)
