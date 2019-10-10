@@ -856,7 +856,7 @@ async function populateWithNesGames(knex) {
       developer: "Nintendo",
       publisher: "Nintendo",
       amiibo_series: "Animal Crossing series",
-      release_year: "11/22/2015",
+      release_year: "01/22/2016",
       genre: 'Amiibo',
       console_id: 16,
       cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/reese-amiibo-card-series-2-animal-crossing-series/screenshot-gallery/amiibo_Reese_Card_S2_AC.png'
@@ -866,7 +866,7 @@ async function populateWithNesGames(knex) {
       developer: "Nintendo",
       publisher: "Nintendo",
       amiibo_series: "Animal Crossing series",
-      release_year: "11/22/2015",
+      release_year: "01/22/2016",
       genre: 'Amiibo',
       console_id: 16,
       cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/kicks-amiibo-card-series-2-animal-crossing-series/screenshot-gallery/amiibo_Kicks_Card_S2_AC.png'
@@ -876,13 +876,294 @@ async function populateWithNesGames(knex) {
       developer: "Nintendo",
       publisher: "Nintendo",
       amiibo_series: "Animal Crossing series",
-      release_year: "11/22/2015",
+      release_year: "01/22/2016",
       genre: 'Amiibo',
       console_id: 16,
       cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/isabelle-amiibo-card-series-2-animal-crossing-series/screenshot-gallery/amiibo_Isabelle_Card_S2_AC.png'
     },
-  ]).returning('*')
-    .bind(console)
-    .then(console.log)
-    .catch(console.error);
+    {
+      title: "K.K. - Animal Crossing series (Card)",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "Animal Crossing series",
+      release_year: "01/22/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/kk-amiibo-card-series-2-animal-crossing-series/screenshot-gallery/amiibo_KK_Card_S2_AC.png'
+    },
+    {
+      title: "Animal Crossing Cards - Series 2 - Animal Crossing series (Card)",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "Animal Crossing series",
+      release_year: "01/22/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/animal-crossing-cards-series-2-amiibo-animal-crossing-series/screenshot-gallery/amiibo_AnimalCrossingCards_Series2_char.png'
+    },
+    {
+      title: "Kicks - Animal Crossing series",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "Animal Crossing series",
+      release_year: "01/22/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/kicks-amiibo-animal-crossing-series/screenshot-gallery/amiibo_Kicks_AnimalCrossing_char.png'
+    },
+    {
+      title: "Celeste - Animal Crossing series",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "Animal Crossing series",
+      release_year: "01/22/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/celeste-amiibo-animal-crossing-series/screenshot-gallery/amiibo_Celeste_AnimalCrossing_char.png'
+    },
+    {
+      title: "Resetti - Animal Crossing series",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "Animal Crossing series",
+      release_year: "01/22/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/resetti-amiibo-animal-crossing-series/screenshot-gallery/amiibo_Resetti_AnimalCrossing_char.png'
+    },
+    {
+      title: "Lucas - Super Smash Bros. series",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "Super Smash Bros. series",
+      release_year: "01/22/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/lucas-amiibo-super-smash-bros-series/screenshot-gallery/amiibo_Lucas_Smash_char.png'
+    },
+    {
+      title: "Blathers - Animal Crossing series",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "Animal Crossing series",
+      release_year: "01/22/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/blathers-amiibo-animal-crossing-series/screenshot-gallery/amiibo_Blathers_AC_char.png'
+    },
+    {
+      title: "Mega Man® - Gold Edition - Super Smash Bros. series",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "Super Smash Bros. series",
+      release_year: "02/23/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/mega-man-gold-edition-amiibo/screenshot-gallery/amiibo_MegaMan_GoldEdition_char.png'
+    },
+    {
+      title: "Wolf Link",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "",
+      release_year: "03/04/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/wolf-link-amiibo/screenshot-gallery/amiibo_WolfLink_Zelda_char.png'
+    },
+    {
+      title: "Animal Crossing Cards - Series 3 - Animal Crossing series (Card)",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "Animal Crossing series",
+      release_year: "03/18/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/animal-crossing-cards-series-3-amiibo-animal-crossing-series/screenshot-gallery/amiibo_Cards_Series3_AC_char.png'
+    },
+    {
+      title: "Shadow Mewtwo",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "",
+      release_year: "03/18/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/shadow-mewtwo-amiibo-card-pokken-tournament/screenshot-gallery/amiibo_ShadowMewtwo_Card_Pokemon.png'
+    },
+    {
+      title: "Timmy & Tommy - Animal Crossing series",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "Animal Crossing series",
+      release_year: "03/18/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/timmy-and-tommy-amiibo-animal-crossing-series/screenshot-gallery/amiibo_TimmyTommy_AnimalCrossing_char.png'
+    },
+    {
+      title: "Rover - Animal Crossing series",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "Animal Crossing series",
+      release_year: "03/18/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/rover-amiibo-animal-crossing-series/screenshot-gallery/amiibo_Rover_AnimalCrossing_char.png'
+    },
+    {
+      title: "Kapp'n - Animal Crossing series",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "Animal Crossing series",
+      release_year: "03/18/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/kappn-amiibo-animal-crossing-series/screenshot-gallery/amiibo_Kappn_AnimalCrossing_char.png'
+    },
+    {
+      title: "Ryu - Super Smash Bros. series",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "Super Smash Bros. series",
+      release_year: "03/18/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/ryu-amiibo-super-smash-bros-series/screenshot-gallery/amiibo_Ryu_Smash_char.png'
+    },
+    {
+      title: "Roy - Super Smash Bros. series",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "Super Smash Bros. series",
+      release_year: "03/18/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/roy-amiibo-super-smash-bros-series/screenshot-gallery/amiibo_Roy_Smash_char.png'
+    },
+    {
+      title: "R.O.B. Famicom Colors - Super Smash Bros. series",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "Super Smash Bros. series",
+      release_year: "03/18/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/rob-famicom-colors-amiibo-super-smash-bros-series/screenshot-gallery/amiibo_ROB-FC_Smash_char.png'
+    },
+    {
+      title: "Kirby - Kirby series",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "Kirby series",
+      release_year: "06/09/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/kirby-amiibo-kirby-series/screenshot-gallery/amiibo_Kirby_Kirby_char.png'
+    },
+    {
+      title: "Waddle Dee - Kirby series",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "Kirby series",
+      release_year: "06/09/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/waddle-dee-amiibo-kirby-series/screenshot-gallery/amiibo_WaddleDee_Kirby_char.png'
+    },
+    {
+      title: "Meta Knight - Kirby series",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "Kirby series",
+      release_year: "06/09/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/meta-knight-amiibo-kirby-series/screenshot-gallery/amiibo_MetaKnight_Kirby_char.png'
+    },
+    {
+      title: "King Dedede - Kirby series",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "Kirby series",
+      release_year: "06/10/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/king-dedede-amiibo-kirby-series/screenshot-gallery/amiibo_KingDedede_Kirby_char.png'
+    },
+    {
+      title: "Isabelle - Summer Outfit - Animal Crossing series",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "Animal Crossing series",
+      release_year: "06/10/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/isabelle-summer-outfit-amiibo-animal-crossing-series/screenshot-gallery/amiibo_Isabelle-Summer_AnimalCrossing_char.png'
+    },
+    {
+      title: "Animal Crossing Cards - Series 4 - Animal Crossing series",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "Animal Crossing series",
+      release_year: "06/10/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/animal-crossing-cards-series-4-amiibo-animal-crossing-series/screenshot-gallery/amiibo_Cards_Series4_AC_char.png'
+    },
+    {
+      title: "Marie - Splatoon series",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "Splatoon series",
+      release_year: "07/08/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/marie-amiibo-splatoon-series/screenshot-gallery/amiibo_Marie_Splatoon_char.png'
+    },
+    {
+      title: "Callie - Splatoon series",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "Splatoon series",
+      release_year: "07/08/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/callie-amiibo-splatoon-series/screenshot-gallery/amiibo_Callie_Splatoon_char.png'
+    },
+    {
+      title: "Inkling Squid - Splatoon series",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "Splatoon series",
+      release_year: "07/08/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/inkling-squid-2-amiibo-splatoon-series/screenshot-gallery/amiibo_Squid2_Splatoon_char.png'
+    },
+    {
+      title: "Inkling Boy - Splatoon series",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "Splatoon series",
+      release_year: "07/08/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/inkling-boy-2-amiibo-splatoon-series/screenshot-gallery/amiibo_Boy2_Splatoon_char.png'
+    },
+    {
+      title: "Inkling Girl - Splatoon series",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "Splatoon series",
+      release_year: "07/08/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/inkling-girl-2-amiibo-splatoon-series/screenshot-gallery/amiibo_Girl2_Splatoon_char.png'
+    },
+  ]);
+  // .returning('*')
+  //   .bind(console)
+  //   .then(console.log)
+  //   .catch(console.error);
 };
