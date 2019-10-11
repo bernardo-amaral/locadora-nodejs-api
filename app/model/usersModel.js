@@ -37,12 +37,12 @@ class User {
 
   static createUser(newUser, result) {
     let query = {
-      text: 'INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING user_id',
+      text: 'INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING *',
       values: [newUser.name, newUser.email, newUser.password],
     };
     if (newUser.userId) {
       query = {
-        text: 'INSERT INTO users (user_id, name, email, password) VALUES ($1, $2, $3, $4) RETURNING user_id',
+        text: 'INSERT INTO users (user_id, name, email, password) VALUES ($1, $2, $3, $4) RETURNING *',
         values: [newUser.userId, newUser.name, newUser.email, newUser.password],
       };
     }
