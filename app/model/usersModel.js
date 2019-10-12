@@ -50,6 +50,8 @@ class User {
       .then(response => result(null, {
         sucess: (response.rowCount > 0),
         userId: response.rows[0].user_id,
+        email: response.rows[0].email,
+        name: response.rows[0].name,
       }))
       .catch(e => result(null, e.stack));
   }
