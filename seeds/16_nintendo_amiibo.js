@@ -1161,6 +1161,128 @@ async function populateWithNesGames(knex) {
       console_id: 16,
       cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/inkling-girl-2-amiibo-splatoon-series/screenshot-gallery/amiibo_Girl2_Splatoon_char.png'
     },
+    {
+      title: "Donkey Kong",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "Super Mario series",
+      release_year: "11/03/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/donkey-kong-amiibo-super-mario-series/screenshot-gallery/amiibo_DK_SuperMario_char.png'
+    },
+    {
+      title: "Diddy Kong",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "Super Mario series",
+      release_year: "11/03/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/diddy-kong-amiibo-super-mario-series/screenshot-gallery/amiibo_DiddyKong_SuperMario_char.png'
+    },
+    {
+      title: "Wario",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "Super Mario series",
+      release_year: "11/04/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/wario-amiibo-super-mario-series/screenshot-gallery/amiibo_Wario_SuperMario_char.png'
+    },
+    {
+      title: "Waluigi",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "Super Mario series",
+      release_year: "11/04/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/waluigi-amiibo-super-mario-series/screenshot-gallery/amiibo_Waluigi_SuperMario_char.png'
+    },
+    {
+      title: "Rosalina",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "Super Mario series",
+      release_year: "11/04/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/rosalina-amiibo-super-mario-series/screenshot-gallery/amiibo_Rosalina_SuperMario_char.png'
+    },
+    {
+      title: "Daisy",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "Super Mario series",
+      release_year: "11/04/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/daisy-amiibo-super-mario-series/screenshot-gallery/amiibo_Daisy_SuperMario_char.png'
+    },
+    {
+      title: "Boo",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "Super Mario series",
+      release_year: "11/04/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/boo-amiibo-super-mario-series/screenshot-gallery/amiibo_Boo_SuperMario_char.png'
+    },
+    {
+      title: "Zelda - The Wind Waker",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "30th anniversary series",
+      release_year: "12/02/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/toon-zelda-the-wind-waker-amiibo-30th-anniversary-series/screenshot-gallery/amiibo_Zelda-WW_30thAnniv_char.png'
+    },
+    {
+      title: "Toon Link - The Wind Waker",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "30th anniversary series",
+      release_year: "12/02/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/toon-link-the-wind-waker-amiibo-30th-anniversary-series/screenshot-gallery/amiibo_Link-WW_30thAnniv_char.png'
+    },
+    {
+      title: "Link™ - The Legend of Zelda",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "30th anniversary series",
+      release_year: "12/02/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/link-the-legend-of-zelda-amiibo-30th-anniversary-series/screenshot-gallery/amiibo_Link_30thAnniv_char.png'
+    },
+    {
+      title: "Link™ - Ocarina of Time",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "30th anniversary series",
+      release_year: "12/02/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/link-ocarina-of-time-amiibo-30th-anniversary-series/screenshot-gallery/amiibo_Link-OOT_30thAnniv_char.png'
+    },
+    {
+      title: "Animal Crossing: New Leaf - Welcome amiibo series",
+      developer: "Nintendo",
+      publisher: "Nintendo",
+      amiibo_series: "Animal Crossing series",
+      release_year: "12/02/2016",
+      genre: 'Amiibo',
+      console_id: 16,
+      cover_picture: 'https://www.nintendo.com/content/dam/noa/en_US/amiibo/animal-crossing-cards-amiibo-animal-crossing-series/screenshot-gallery/amiibo_Cards_Series5_AC_char.png'
+    },
+
+
   ]);
   // .returning('*')
   //   .bind(console)
