@@ -30,16 +30,17 @@ class UserController {
           response.status(200).json({
             success: true,
             token,
-            userName: userLogged.userName,
+            name: userLogged.name,
+            email: userLogged.email,
             userId: userLogged.userId,
           });
         });
-      } else {
-        response.status(400).json({
-          error: true,
-          message: 'Access denied!',
-        });
       }
+
+      response.status(400).json({
+        success: false,
+        message: 'Access denied!',
+      });
     });
   }
 

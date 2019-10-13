@@ -18,7 +18,7 @@ class User {
 
   static async login(user, result) {
     const query = {
-      text: 'SELECT user_id, name FROM users WHERE email = $1 AND password = $2',
+      text: 'SELECT user_id, name, email FROM users WHERE email = $1 AND password = $2',
       values: [user.email, user.password],
     };
 
@@ -27,12 +27,13 @@ class User {
     }
 
     await sql.query(query)
-      .then(response => result(null, {
+      .then((response) => result(null, {
         userLogged: (response.rows.length > 0),
         userId: response.rows[0].user_id,
-        userName: response.rows[0].name,
+        name: response.rows[0].name,
+        email: response.rows[0].email,
       }))
-      .catch(error => result(error.stack));
+      .catch((error) => result(error.stack));
   }
 
   static createUser(newUser, result) {
@@ -47,13 +48,13 @@ class User {
       };
     }
     sql.query(query)
-      .then(response => result(null, {
+      .then((response) => result(null, {
         sucess: (response.rowCount > 0),
         userId: response.rows[0].user_id,
         email: response.rows[0].email,
         name: response.rows[0].name,
       }))
-      .catch(e => result(null, e.stack));
+      .catch((e) => result(null, e.stack));
   }
 
   static getById(userId, result) {
@@ -62,8 +63,8 @@ class User {
       values: [userId],
     };
     sql.query(query)
-      .then(response => result(null, response.rows))
-      .catch(e => e.stack);
+      .then((response) => result(null, response.rows))
+      .catch((e) => e.stack);
   }
 
   static getAll(result) {
@@ -71,8 +72,8 @@ class User {
       text: 'SELECT * FROM users ORDER BY user_id ASC',
     };
     sql.query(query)
-      .then(response => result(null, response.rows))
-      .catch(e => e.stack);
+      .then((response) => result(null, response.rows))
+      .catch((e) => e.stack);
   }
 
   static delete(id, result) {
@@ -81,8 +82,8 @@ class User {
       values: [id],
     };
     sql.query(query)
-      .then(response => result(null, (response.rowCount > 0)))
-      .catch(e => result(e.stack));
+      .then((response) => result(null, (response.rowCount > 0)))
+      .catch((e) => result(e.stack));
   }
 }
 

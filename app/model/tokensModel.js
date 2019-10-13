@@ -8,8 +8,8 @@ class Token {
         values: [token, userId],
       };
       sql.query(query)
-        .then(response => result(null, response.rows))
-        .catch(e => e.stack);
+        .then((response) => result(null, response.rows))
+        .catch((e) => e.stack);
     });
   }
 
@@ -19,8 +19,8 @@ class Token {
       values: ['N', userId],
     };
     sql.query(query)
-      .then(response => result(null, response.rows))
-      .catch(e => result(e.stack));
+      .then((response) => result(null, response.rows))
+      .catch((e) => result(e.stack));
   }
 
   static async checkTokenStatus(token, result) {
@@ -29,10 +29,10 @@ class Token {
       values: ['S', token],
     };
     await sql.query(query)
-      .then(response => result(null, {
+      .then((response) => result(null, {
         sucess: (response.rowCount > 0),
       }))
-      .catch(error => result(error));
+      .catch((error) => result(error));
   }
 }
 
