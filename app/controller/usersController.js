@@ -23,7 +23,6 @@ class UserController {
           message: error,
         });
       }
-
       if (userLogged) {
         const token = jwt.sign({ name: loginUser.name, email: loginUser.email }, config.jwtSecret, { expiresIn: '24h' });
         TokenVerify.storageToken(token, userId, () => {
@@ -35,12 +34,12 @@ class UserController {
             userId: userLogged.userId,
           });
         });
+      } else {
+        response.status(400).json({
+          success: false,
+          message: 'Access denied!',
+        });
       }
-
-      response.status(400).json({
-        success: false,
-        message: 'Access denied!',
-      });
     });
   }
 

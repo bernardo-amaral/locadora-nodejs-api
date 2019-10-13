@@ -26,14 +26,21 @@ class User {
       result('Informe os campos [email, password].');
     }
 
-    await sql.query(query)
-      .then((response) => result(null, {
-        userLogged: (response.rows.length > 0),
-        userId: response.rows[0].user_id,
-        name: response.rows[0].name,
-        email: response.rows[0].email,
-      }))
-      .catch((error) => result(error.stack));
+    try {
+      const response = await sql.query(query);
+      if (!response.rowCount) {
+        throw new Error('Access denied!');
+      } else {
+        result(null, {
+          userLogged: true,
+          userId: response.rows[0].user_id,
+          name: response.rows[0].name,
+          email: response.rows[0].email,
+        });
+      }
+    } catch (error) {
+      result(error.text);
+    }
   }
 
   static createUser(newUser, result) {
