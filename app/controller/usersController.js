@@ -69,17 +69,25 @@ class UserController {
     });
   }
 
-  static createAUser(request, response) {
+  static async createAUser(request, response) {
     const newUser = new User(request.body);
-    if (!newUser.name && !newUser.email && !newUser.password) {
-      response.status(400).send({ error: true, message: 'Please provide user required fields' });
-    } else {
-      newUser.password = crypto.createHash('md5').update(newUser.password).digest('hex');
-      User.createUser(newUser, (error, dbResponse) => {
-        if (error) { response.send(error); }
-        response.json(dbResponse);
-      });
-    }
+    await User.createUser(newUser, (error, result) => {
+      if (error) {
+        response.status(500).json({
+          success: false,
+          message: error,
+        });
+      } else {
+        response.status(200).json({
+          success: true,
+          userId: result.userId,
+          email: result.email,
+          name: result.name,
+        });
+      }
+    });
+    // if (error) { response.json(error); }
+    // });
   }
 }
 

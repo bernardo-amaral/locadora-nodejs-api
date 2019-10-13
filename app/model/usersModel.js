@@ -43,25 +43,44 @@ class User {
     }
   }
 
-  static createUser(newUser, result) {
-    let query = {
-      text: 'INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING *',
-      values: [newUser.name, newUser.email, newUser.password],
-    };
-    if (newUser.userId) {
-      query = {
-        text: 'INSERT INTO users (user_id, name, email, password) VALUES ($1, $2, $3, $4) RETURNING *',
-        values: [newUser.userId, newUser.name, newUser.email, newUser.password],
+  static async createUser(newUser, result) {
+    try {
+      if (!newUser.email || !newUser.password || !newUser.name) {
+        result('Informe os campos [name, email, password].');
+      }
+
+      const encryptedPassword = crypto.createHash('md5').update(newUser.password).digest('hex');
+
+      let query = {
+        text: 'INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING *',
+        values: [newUser.name, newUser.email, encryptedPassword],
       };
+      if (newUser.userId) {
+        query = {
+          text: 'INSERT INTO users (user_id, name, email, password) VALUES ($1, $2, $3, $4) RETURNING *',
+          values: [newUser.userId, newUser.name, newUser.email, encryptedPassword],
+        };
+      }
+      const checkQuery = {
+        text: 'SELECT email FROM users WHERE email = $1',
+        values: [newUser.email],
+      };
+      const responseCheckEmail = await sql.query(checkQuery);
+
+      if (responseCheckEmail.rowCount > 0) {
+        result(`Duplicated email. ${newUser.email}`);
+      } else {
+        const response = await sql.query(query);
+        result(null, {
+          sucess: (response.rowCount > 0),
+          userId: response.rows[0].user_id,
+          email: response.rows[0].email,
+          name: response.rows[0].name,
+        });
+      }
+    } catch (error) {
+      result(error.text);
     }
-    sql.query(query)
-      .then((response) => result(null, {
-        sucess: (response.rowCount > 0),
-        userId: response.rows[0].user_id,
-        email: response.rows[0].email,
-        name: response.rows[0].name,
-      }))
-      .catch((e) => result(null, e.stack));
   }
 
   static getById(userId, result) {

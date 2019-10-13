@@ -39,9 +39,9 @@ class Routes {
       .get(Games.listAll)
       .post(Games.createAUserGame)
       .delete(Games.removeAUserGame);
-    
+
     apiRoutes.route('/user/games/remove')
-      .post(Games.removeAUserGame);    
+      .post(Games.removeAUserGame);
 
     apiRoutes.route('/user/consoles/:userId')
       .get(Consoles.getByUserId);
