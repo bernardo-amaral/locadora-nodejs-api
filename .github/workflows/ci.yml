@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 14.x]
+        node-version: [12.x]
 
     steps:
     - uses: actions/checkout@v1
@@ -21,9 +21,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: npm install
+    - name: npm i
       run: |
-        npm install
+        npm i
     - name: npm coverage
       run: |
         npm coverage
