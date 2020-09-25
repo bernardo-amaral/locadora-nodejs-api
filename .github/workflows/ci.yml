@@ -24,9 +24,9 @@ jobs:
     - name: npm install
       run: |
         npm install
-    - name: npm test
+    - name: npm coverage
       run: |
-        npm test
+        npm coverage
       env:
         CI: true
 
