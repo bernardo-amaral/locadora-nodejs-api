@@ -37,7 +37,7 @@
     "express": "^4.17.1",
     "express-jwt": "^6.0.0",
     "jsonwebtoken": "^8.5.1",
-    "knex": "^0.19.3",
+    "knex": "^0.19.5",
     "mercadolibre": "^0.0.13",
     "node-cron": "^2.0.3",
     "pg": "^7.11.0",
