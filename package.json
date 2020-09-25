@@ -14,9 +14,6 @@
     "seed": "./node_modules/.bin/knex seed:run",
     "knex": "./node_modules/.bin/knex",
     "build": "npm run lint && npm run migrate && npm run seed",
-    "generate-lcov": "nyc report --reporter=text-lcov > lcov.info",
-    "coveralls-coverage": "coveralls < lcov.info",
-    "codeclimate-coverage": "codeclimate-test-reporter < lcov.info",
     "coverage": "nyc npm run test --reporter=text mocha --exit"
   },
   "repository": {
@@ -50,12 +47,11 @@
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.0",
     "mocha": "^8.1.3",
-    "nyc": "^15.1.0",
-    "supertest": "^4.0.2"
+    "nyc": "^15.1.0"
   },
   "nodemonConfig": {
     "ignore": [
-      "test/*",
+      "test/*/*",
       "docs/*",
       "migrations/*"
     ],

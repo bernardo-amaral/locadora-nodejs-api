@@ -24,8 +24,8 @@ jobs:
     - name: npm i
       run: |
         npm i
-    - name: npm coverage
+    - name: npm lint
       run: |
-        npm coverage
+        npm lint
       env:
         CI: true
