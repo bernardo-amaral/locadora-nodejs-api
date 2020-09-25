@@ -29,7 +29,3 @@ jobs:
         npm coverage
       env:
         CI: true
-
-    - name: npm build
-      run: |
-        npm run build --if-present
