@@ -24,8 +24,8 @@ jobs:
     - name: npm i
       run: |
         npm i
-    - name: npm lint
+    - name: npm run lint
       run: |
-        npm lint
+        npm run lint
       env:
         CI: true
