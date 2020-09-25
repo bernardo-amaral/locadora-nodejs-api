@@ -10,11 +10,13 @@ app.listen(port, () => console.log(`API server started on: ${port}`));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-const Routes = require('./routes/appV1Routes');
+const UserRoutes = require('./routes/userRoutes');
+const AppRoutes = require('./routes/appRoutes');
 
 app.get('/', (request, response) => {
   response.json({ success: true, message: 'Welcome!' });
 });
 
-app.use('/api', new Routes());
+app.use('/api', new UserRoutes());
+app.use('/api', new AppRoutes());
 module.exports = app;

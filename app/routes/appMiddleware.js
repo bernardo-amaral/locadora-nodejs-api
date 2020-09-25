@@ -19,14 +19,12 @@ class Middleware {
             return next();
           });
         });
-      } else {
-        return next();
-        // return response.status(403).send({
-        //   success: false,
-        //   message: 'No token provided.',
-        // });
       }
-      return false;
+      return next();
+      // return response.status(403).send({
+      //   success: false,
+      //   message: 'No token provided.',
+      // });
     });
   }
 }
