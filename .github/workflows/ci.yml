@@ -21,11 +21,14 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: npm i
+    - name: Install dependences
       run: |
         npm i
-    - name: npm run lint
+    - name: Run eslint
       run: |
         npm run lint
+    - name: Check code coverage
+      run: |
+        npm run coverage
       env:
         CI: true
