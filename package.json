@@ -15,8 +15,8 @@
   "homepage": "https://github.com/bernardo-amaral/nodejs-api-jwt#readme",
   "scripts": {
     "test": "./node_modules/.bin/mocha ./test/unit/*.spec.js --reporter spec --exit",
-    "start": "node ./app/server.js",
-    "dev": "cross-env NODE_ENV=develop node ./app/server.js",
+    "start": "nodemon ./app/server.js",
+    "dev": "SET NODE_DEBUG=* && SET NODE_ENV=develop && node ./app/server.js",
     "lint": "./node_modules/.bin/eslint app/*js",
     "migrate": "./node_modules/.bin/knex migrate:rollback && ./node_modules/.bin/knex migrate:latest",
     "seed": "./node_modules/.bin/knex seed:run",
@@ -25,6 +25,8 @@
     "coverage": "nyc npm run test --reporter=text mocha --exit"
   },
   "dependencies": {
+    "awilix": "^4.2.6",
+    "awilix-express": "^3.0.0",
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "cheerio": "^1.0.0-rc.3",

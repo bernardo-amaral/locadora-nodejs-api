@@ -1,46 +1,15 @@
-const jwt = require('jsonwebtoken');
-const crypto = require('crypto');
-const User = require('../model/usersModel');
-const TokenVerify = require('../model/tokensModel');
-const config = require('../../config');
+const User = require('../model/UsersModel');
+const TokenVerify = require('../model/TokensModel');
 
 class UserController {
-  static listAll(request, response) {
-    User.getAll((err, user) => {
-      if (err) { response.send(err); }
-      response.send(user);
-    });
+  static async listAll(ctx) {
+    const response = await ctx.container.cradle.getAllUsersOperation.execute();
+    return ctx.res.status(200).json(response);
   }
 
-  static async authUser(request, response) {
-    const loginUser = new User(request.body);
-    loginUser.password = User.encryptPassword(loginUser.password);
-
-    await User.login(loginUser, (error, userLogged, userId) => {
-      if (error) {
-        response.status(500).json({
-          success: false,
-          message: error,
-        });
-      }
-      if (userLogged) {
-        const token = jwt.sign({ name: loginUser.name, email: loginUser.email }, config.jwtSecret, { expiresIn: '24h' });
-        TokenVerify.storageToken(token, userId, () => {
-          response.status(200).json({
-            success: true,
-            token,
-            name: userLogged.name,
-            email: userLogged.email,
-            userId: userLogged.userId,
-          });
-        });
-      } else {
-        response.status(400).json({
-          success: false,
-          message: 'Access denied!',
-        });
-      }
-    });
+  static async authUser(ctx) {
+    const response = await ctx.container.cradle.authUserOperation.execute(ctx.body);
+    return ctx.res.status(200).json(response);
   }
 
   static logoutUser(request, response) {

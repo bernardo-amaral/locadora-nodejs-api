@@ -1,26 +1,39 @@
+/* eslint-disable class-methods-use-this */
 const sql = require('./database');
 
-class Token {
-  static storageToken(token, userId, result) {
-    this.disableUsersTokens(userId, () => {
-      const query = {
-        text: 'INSERT INTO tokens (token, user_id) VALUES ($1, $2)',
-        values: [token, userId],
-      };
-      sql.query(query)
-        .then((response) => result(null, response.rows))
-        .catch((e) => e.stack);
-    });
+class TokensModel {
+  constructor({ database }) {
+    this.database = database;
   }
 
-  static disableUsersTokens(userId, result) {
+  async insertToken(token, userId) {
     const query = {
-      text: 'UPDATE tokens SET active = $1 WHERE user_id = $2',
-      values: ['N', userId],
+      text: 'INSERT INTO tokens (token, user_id) VALUES ($1, $2)',
+      values: [token, userId],
     };
-    sql.query(query)
-      .then((response) => result(null, response.rows))
-      .catch((e) => result(e.stack));
+    try {
+      const disabledTokens = await this.disableUsersTokens(userId);
+      if (disabledTokens) {
+        const response = await sql.query(query);
+        return response;
+      }
+      return false;
+    } catch (error) {
+      throw new Error(error.text);
+    }
+  }
+
+  async disableUsersTokens(userId) {
+    try {
+      const query = {
+        text: 'UPDATE tokens SET active = $1 WHERE user_id = $2',
+        values: ['N', userId],
+      };
+      const response = await sql.query(query);
+      return response;
+    } catch (error) {
+      throw new Error(error);
+    }
   }
 
   static async checkTokenStatus(token, result) {
@@ -36,4 +49,4 @@ class Token {
   }
 }
 
-module.exports = Token;
+module.exports = TokensModel;

@@ -30,7 +30,7 @@ docker-compose up --build
 - Acesse o container com o comando:
 
 ```bash
-docker-compose exec -ti nodeapi bash
+docker exec -ti nodeapi bash
 ```
 
 - Dentro do container execute os seguintes comandos:

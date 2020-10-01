@@ -1,45 +1,37 @@
+/* eslint-disable class-methods-use-this */
 const crypto = require('crypto');
 const sql = require('./database');
 
-class User {
-  constructor(user) {
-    this.userId = user.userId;
-    this.name = user.name;
-    this.email = user.email;
-    this.password = user.password;
+class UsersModel {
+  constructor({ database }) {
+    this.database = database;
+    //   this.id = user.id;
+    //   this.name = user.name;
+    //   this.email = user.email;
+    //   this.password = user.password;
   }
 
-  static encryptPassword(password) {
+  async encryptPassword(password) {
     if (password) {
-      return crypto.createHash('md5').update(password).digest('hex');
+      const encryptedPassword = await crypto.createHash('md5').update(password).digest('hex');
+      return encryptedPassword;
     }
     return password;
   }
 
-  static async login(user, result) {
+  async login(userData) {
     const query = {
-      text: 'SELECT user_id, name, email FROM users WHERE email = $1 AND password = $2',
-      values: [user.email, user.password],
+      text: 'SELECT user_id, name, email FROM users WHERE email = $1 AND password = $2 LIMIT 1',
+      values: [userData.email, userData.password],
     };
 
-    if (!user.email || !user.password) {
-      result('Informe os campos [email, password].');
-    }
-
     try {
-      const response = await sql.query(query);
-      if (!response.rowCount) {
-        throw new Error('Access denied!');
-      } else {
-        result(null, {
-          userLogged: true,
-          userId: response.rows[0].user_id,
-          name: response.rows[0].name,
-          email: response.rows[0].email,
-        });
-      }
+      const { rows, error } = await this.database.query(query);
+      if (error) throw new Error('Access denied!');
+
+      return { rows: rows[0], error };
     } catch (error) {
-      result(error.text);
+      return error;
     }
   }
 
@@ -93,13 +85,14 @@ class User {
       .catch((e) => e.stack);
   }
 
-  static getAll(result) {
-    const query = {
-      text: 'SELECT * FROM users ORDER BY user_id ASC',
-    };
-    sql.query(query)
-      .then((response) => result(null, response.rows))
-      .catch((e) => e.stack);
+  async getAll() {
+    try {
+      const query = 'SELECT * FROM users ORDER BY user_id ASC';
+      const { rows } = await this.database.query({ text: query });
+      return rows;
+    } catch (error) {
+      return error;
+    }
   }
 
   static delete(id, result) {
@@ -113,4 +106,4 @@ class User {
   }
 }
 
-module.exports = User;
+module.exports = UsersModel;
